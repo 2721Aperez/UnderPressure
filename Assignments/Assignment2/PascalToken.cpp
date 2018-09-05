@@ -27,11 +27,11 @@ void PascalToken::initialize()
 
     vector<string> rw_strings =
     {
-        "AND", "ARRAY", "BEGIN", "CASE", "CONST", "DIV", "DO", "DOWNTO",
-        "ELSE", "END", "FILE", "FOR", "FUNCTION", "GOTO", "IF", "IN",
-        "LABEL", "MOD", "NIL", "NOT", "OF", "OR", "PACKED", "PROCEDURE",
-        "PROGRAM", "RECORD", "REPEAT", "SET", "THEN", "TO", "TYPE",
-        "UNTIL", "VAR", "WHILE", "WITH"
+        "auto", "double", "int", "struct", "break", "else", "long", "switch",
+        "case", "enum", "namespace", "template", "char", "exterm", "operator", "this",
+        "class", "float", "package", "throw", "const", "for", "public", "union",
+        "continue", "goto", "return", "void", "do", "if", "static",
+        "while"
     };
 
     vector<PascalTokenType> rw_keys =
@@ -84,8 +84,11 @@ void PascalToken::initialize()
 
     vector<string> ss_strings =
     {
-        "+", "-", "*", "/", ":=", ".", ",", ";", ":", "'", "=", "<>",
-        "<", "<=", ">=", ">", "(", ")", "[", "]", "{", "}",  "^", ".."
+        "~", "!", "@", "%", "^", "&", "*", "-", "+", "=", "|", "/",
+        ":", ";", "?", "<", ">", ".", ",", "'", "\"", "(",  ")", "[",
+        "]", "{", "}", "++", "--", "<<", ">>", "<=", ">=", "+=", "-=",
+        "*=", "/=", "==", "|=", "%=", "&=", "^=", "!=", "<<=", ">>=",
+        "||", "&&", "//", "/*", "*/" 
     };
 
     vector<PascalTokenType> ss_keys =
