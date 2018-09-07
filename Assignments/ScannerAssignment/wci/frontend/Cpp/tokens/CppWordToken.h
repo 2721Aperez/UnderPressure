@@ -10,14 +10,14 @@
 #define WCI_FRONTEND_PASCAL_TOKENS_PASCALWORDTOKEN_H_
 
 #include <string>
-#include "../PascalToken.h"
+#include "../CppToken.h"
 
 namespace wci { namespace frontend { namespace pascal { namespace tokens {
 
 using namespace std;
-using namespace wci::frontend::pascal;
+using namespace wci::frontend::Cpp;
 
-class PascalWordToken : public PascalToken
+class CppWordToken : public CppToken
 {
 public:
     /**
@@ -25,17 +25,17 @@ public:
      * @param source the source from where to fetch the token's characters.
      * @throw a string message if an error occurred.
      */
-    PascalWordToken(Source *source) throw (string);
+    CppWordToken(Source *source) throw (string);
 
 protected:
     /**
-     * Extract a Pascal word token from the source.
+     * Extract a Cpp word token from the source.
      * Override of wci::frontend::Token.
      * @throw a string message if an error occurred.
      */
     void extract() throw (string);
 };
 
-}}}}  // namespace wci::frontend::pascal::tokens
+}}}}  // namespace wci::frontend::Cpp::tokens
 
-#endif /* WCI_FRONTEND_PASCAL_TOKENS_PASCALWORDTOKEN_H_ */
+#endif /* WCI_FRONTEND_CPP_TOKENS_CPPWORDTOKEN_H_ */
