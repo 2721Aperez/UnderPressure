@@ -1,7 +1,7 @@
 /**
- * <h1>PascalToken</h1>
+ * <h1>CppToken</h1>
  *
- * <p>Base class for Pascal token classes.</p>
+ * <p>Base class for Cpp token classes.</p>
  *
  * <p>Copyright (c) 2017 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
@@ -9,19 +9,19 @@
 #include <string>
 #include <vector>
 #include <map>
-#include "PascalToken.h"
+#include "CppToken.h"
 
-namespace wci { namespace frontend { namespace pascal {
+namespace wci { namespace frontend { namespace Cpp {
 
 using namespace std;
 
-map<string, PascalTokenType> PascalToken::RESERVED_WORDS;
-map<string, PascalTokenType> PascalToken::SPECIAL_SYMBOLS;
-map<PascalTokenType, string> PascalToken::SPECIAL_SYMBOL_NAMES;
+map<string, CppTokenType> CppToken::RESERVED_WORDS;
+map<string, CppTokenType> CppToken::SPECIAL_SYMBOLS;
+map<CppTokenType, string> CppToken::SPECIAL_SYMBOL_NAMES;
 
-bool PascalToken::INITIALIZED = false;
+bool CppToken::INITIALIZED = false;
 
-void PascalToken::initialize()
+void CppToken::initialize()
 {
     if (INITIALIZED) return;
 
@@ -34,47 +34,47 @@ void PascalToken::initialize()
         "UNTIL", "VAR", "WHILE", "WITH"
     };
 
-    vector<PascalTokenType> rw_keys =
+    vector<CppTokenType> rw_keys =
     {
-        PascalTokenType::AND,
-        PascalTokenType::ARRAY,
-        PascalTokenType::BEGIN,
-        PascalTokenType::CASE,
-        PascalTokenType::CONST,
-        PascalTokenType::DIV,
-        PascalTokenType::DO,
-        PascalTokenType::DOWNTO,
+        CppTokenType::AND,
+        CppTokenType::ARRAY,
+        CppTokenType::BEGIN,
+        CppTokenType::CASE,
+        CppTokenType::CONST,
+        CppTokenType::DIV,
+        CppTokenType::DO,
+        CppTokenType::DOWNTO,
 
-        PascalTokenType::ELSE,
-        PascalTokenType::END,
-        PascalTokenType::FILE,
-        PascalTokenType::FOR,
-        PascalTokenType::FUNCTION,
-        PascalTokenType::GOTO,
-        PascalTokenType::IF,
-        PascalTokenType::IN,
+        CppTokenType::ELSE,
+        CppTokenType::END,
+        CppTokenType::FILE,
+        CppTokenType::FOR,
+        CppTokenType::FUNCTION,
+        CppTokenType::GOTO,
+        CppTokenType::IF,
+        CppTokenType::IN,
 
-        PascalTokenType::LABEL,
-        PascalTokenType::MOD,
-        PascalTokenType::NIL,
-        PascalTokenType::NOT,
-        PascalTokenType::OF,
-        PascalTokenType::OR,
-        PascalTokenType::PACKED,
-        PascalTokenType::PROCEDURE,
+        CppTokenType::LABEL,
+        CppTokenType::MOD,
+        CppTokenType::NIL,
+        CppTokenType::NOT,
+        CppTokenType::OF,
+        CppTokenType::OR,
+        CppTokenType::PACKED,
+        CppTokenType::PROCEDURE,
 
-        PascalTokenType::PROGRAM,
-        PascalTokenType::RECORD,
-        PascalTokenType::REPEAT,
-        PascalTokenType::SET,
-        PascalTokenType::THEN,
-        PascalTokenType::TO,
-        PascalTokenType::TYPE,
+        CppTokenType::PROGRAM,
+        CppTokenType::RECORD,
+        CppTokenType::REPEAT,
+        CppTokenType::SET,
+        CppTokenType::THEN,
+        CppTokenType::TO,
+        CppTokenType::TYPE,
 
-        PascalTokenType::UNTIL,
-        PascalTokenType::VAR,
-        PascalTokenType::WHILE,
-        PascalTokenType::WITH
+        CppTokenType::UNTIL,
+        CppTokenType::VAR,
+        CppTokenType::WHILE,
+        CppTokenType::WITH
     };
 
     for (int i = 0; i < rw_strings.size(); i++)
@@ -88,33 +88,33 @@ void PascalToken::initialize()
         "<", "<=", ">=", ">", "(", ")", "[", "]", "{", "}",  "^", ".."
     };
 
-    vector<PascalTokenType> ss_keys =
+    vector<CppTokenType> ss_keys =
     {
-        PascalTokenType::PLUS,
-        PascalTokenType::MINUS,
-        PascalTokenType::STAR,
-        PascalTokenType::SLASH,
-        PascalTokenType::COLON_EQUALS,
-        PascalTokenType::DOT,
-        PascalTokenType::COMMA,
-        PascalTokenType::SEMICOLON,
-        PascalTokenType::COLON,
-        PascalTokenType::QUOTE,
-        PascalTokenType::EQUALS,
-        PascalTokenType::NOT_EQUALS,
+        CppTokenType::PLUS,
+        CppTokenType::MINUS,
+        CppTokenType::STAR,
+        CppTokenType::SLASH,
+        CppTokenType::COLON_EQUALS,
+        CppTokenType::DOT,
+        CppTokenType::COMMA,
+        CppTokenType::SEMICOLON,
+        CppTokenType::COLON,
+        CppTokenType::QUOTE,
+        CppTokenType::EQUALS,
+        CppTokenType::NOT_EQUALS,
 
-        PascalTokenType::LESS_THAN,
-        PascalTokenType::LESS_EQUALS,
-        PascalTokenType::GREATER_EQUALS,
-        PascalTokenType::GREATER_THAN,
-        PascalTokenType::LEFT_PAREN,
-        PascalTokenType::RIGHT_PAREN,
-        PascalTokenType::LEFT_BRACKET,
-        PascalTokenType::RIGHT_BRACKET,
-        PascalTokenType::LEFT_BRACE,
-        PascalTokenType::RIGHT_BRACE,
-        PascalTokenType::UP_ARROW,
-        PascalTokenType::DOT_DOT
+        CppTokenType::LESS_THAN,
+        CppTokenType::LESS_EQUALS,
+        CppTokenType::GREATER_EQUALS,
+        CppTokenType::GREATER_THAN,
+        CppTokenType::LEFT_PAREN,
+        CppTokenType::RIGHT_PAREN,
+        CppTokenType::LEFT_BRACKET,
+        CppTokenType::RIGHT_BRACKET,
+        CppTokenType::LEFT_BRACE,
+        CppTokenType::RIGHT_BRACE,
+        CppTokenType::UP_ARROW,
+        CppTokenType::DOT_DOT
     };
 
     for (int i = 0; i < ss_strings.size(); i++)
@@ -140,10 +140,10 @@ void PascalToken::initialize()
     INITIALIZED = true;
 }
 
-PascalToken::PascalToken(Source *source) throw (string)
+CppToken::CppToken(Source *source) throw (string)
     : Token(source)
 {
     initialize();
 }
 
-}}}  // namespace wci::frontend::pascal
+}}}  // namespace wci::frontend::Cpp
