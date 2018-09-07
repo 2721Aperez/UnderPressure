@@ -1,41 +1,41 @@
 /**
- * <h1>PascalSpecialSymbolToken</h1>
+ * <h1>CppSpecialSymbolToken</h1>
  *
- * <p> Pascal special symbol tokens.</p>
+ * <p> Cpp special symbol tokens.</p>
  *
- * <p>Copyright (c) 2017 by Ronald Mak</p>
+ * <p>Copyright (c) 2017 by Ronald Mak & Under Pressure</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-#ifndef WCI_FRONTEND_PASCAL_TOKENS_PASCALSPECIALSYMBOLTOKEN_H_
-#define WCI_FRONTEND_PASCAL_TOKENS_PASCALSPECIALSYMBOLTOKEN_H_
+#ifndef WCI_FRONTEND_CPP_TOKENS_CPPSPECIALSYMBOLTOKEN_H_
+#define WCI_FRONTEND_CPP_TOKENS_CPPSPECIALSYMBOLTOKEN_H_
 
 #include <string>
-#include "../PascalToken.h"
+#include "../CppToken.h"
 
-namespace wci { namespace frontend { namespace pascal { namespace tokens {
+namespace wci { namespace frontend { namespace Cpp { namespace tokens {
+    
+    using namespace std;
+    using namespace wci::frontend::Cpp;
+    
+    class CppSpecialSymbolToken : public CppToken
+    {
+    public:
+        /**
+         * Constructor.
+         * @param source the source from where to fetch the token's characters.
+         * @throw a string message if an error occurred.
+         */
+        CppSpecialSymbolToken(Source *source) throw (string);
+        
+    protected:
+        /**
+         * Extract a Cpp special symbol token from the source.
+         * Override of wci::frontend::Token.
+         * @throw a string message if an error occurred.
+         */
+        void extract() throw (string);
+    };
+    
+}}}}  // namespace wci::frontend::Cpp::tokens
 
-using namespace std;
-using namespace wci::frontend::pascal;
-
-class PascalSpecialSymbolToken : public PascalToken
-{
-public:
-    /**
-     * Constructor.
-     * @param source the source from where to fetch the token's characters.
-     * @throw a string message if an error occurred.
-     */
-    PascalSpecialSymbolToken(Source *source) throw (string);
-
-protected:
-    /**
-     * Extract a Pascal special symbol token from the source.
-     * Override of wci::frontend::Token.
-     * @throw a string message if an error occurred.
-     */
-    void extract() throw (string);
-};
-
-}}}}  // namespace wci::frontend::pascal::tokens
-
-#endif /* WCI_FRONTEND_PASCAL_TOKENS_PASCALSPECIALSYMBOLTOKEN_H_ */
+#endif /* WCI_FRONTEND_CPP_TOKENS_CPPSPECIALSYMBOLTOKEN_H_ */
