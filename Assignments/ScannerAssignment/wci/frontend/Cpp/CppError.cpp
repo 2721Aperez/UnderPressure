@@ -1,7 +1,7 @@
 /**
- * <h1>PascalError</h1>
+ * <h1>CppError</h1>
  *
- * <p>Pascal translation errors.</p>
+ * <p>Cpp translation errors.</p>
  *
  * <p>Copyright (c) 2017 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
@@ -9,83 +9,83 @@
 #include <string>
 #include <vector>
 #include <map>
-#include "PascalError.h"
+#include "CppError.h"
 
-namespace wci { namespace frontend { namespace pascal {
+namespace wci { namespace frontend { namespace Cpp {
 
 using namespace std;
 
-bool PascalError::INITIALIZED = false;
+bool CppError::INITIALIZED = false;
 
-map<PascalErrorCode, string> PascalError::SYNTAX_ERROR_MESSAGES;
+map<CppErrorCode, string> CppError::SYNTAX_ERROR_MESSAGES;
 
-void PascalError::initialize()
+void CppError::initialize()
 {
     if (INITIALIZED) return;
 
-    vector<PascalErrorCode> error_codes =
+    vector<CppErrorCode> error_codes =
     {
-        PascalErrorCode::ALREADY_FORWARDED,
-        PascalErrorCode::CASE_CONSTANT_REUSED,
-        PascalErrorCode::IDENTIFIER_REDEFINED,
-        PascalErrorCode::IDENTIFIER_UNDEFINED,
-        PascalErrorCode::INCOMPATIBLE_ASSIGNMENT,
-        PascalErrorCode::INCOMPATIBLE_TYPES,
-        PascalErrorCode::INVALID_ASSIGNMENT,
-        PascalErrorCode::INVALID_CHARACTER,
-        PascalErrorCode::INVALID_CONSTANT,
-        PascalErrorCode::INVALID_EXPONENT,
-        PascalErrorCode::INVALID_EXPRESSION,
-        PascalErrorCode::INVALID_FIELD,
-        PascalErrorCode::INVALID_FRACTION,
-        PascalErrorCode::INVALID_IDENTIFIER_USAGE,
-        PascalErrorCode::INVALID_INDEX_TYPE,
-        PascalErrorCode::INVALID_NUMBER,
-        PascalErrorCode::INVALID_STATEMENT,
-        PascalErrorCode::INVALID_SUBRANGE_TYPE,
-        PascalErrorCode::INVALID_TARGET,
-        PascalErrorCode::INVALID_TYPE,
-        PascalErrorCode::INVALID_VAR_PARM,
-        PascalErrorCode::MIN_GT_MAX,
-        PascalErrorCode::MISSING_BEGIN,
-        PascalErrorCode::MISSING_COLON,
-        PascalErrorCode::MISSING_COLON_EQUALS,
-        PascalErrorCode::MISSING_COMMA,
-        PascalErrorCode::MISSING_CONSTANT,
-        PascalErrorCode::MISSING_DO,
-        PascalErrorCode::MISSING_DOT_DOT,
-        PascalErrorCode::MISSING_END,
-        PascalErrorCode::MISSING_EQUALS,
-        PascalErrorCode::MISSING_FOR_CONTROL,
-        PascalErrorCode::MISSING_IDENTIFIER,
-        PascalErrorCode::MISSING_LEFT_BRACKET,
-        PascalErrorCode::MISSING_OF,
-        PascalErrorCode::MISSING_PERIOD,
-        PascalErrorCode::MISSING_PROGRAM,
-        PascalErrorCode::MISSING_RIGHT_BRACKET,
-        PascalErrorCode::MISSING_RIGHT_PAREN,
-        PascalErrorCode::MISSING_SEMICOLON,
-        PascalErrorCode::MISSING_THEN,
-        PascalErrorCode::MISSING_TO_DOWNTO,
-        PascalErrorCode::MISSING_UNTIL,
-        PascalErrorCode::MISSING_VARIABLE,
-        PascalErrorCode::NOT_CONSTANT_IDENTIFIER,
-        PascalErrorCode::NOT_RECORD_VARIABLE,
-        PascalErrorCode::NOT_TYPE_IDENTIFIER,
-        PascalErrorCode::RANGE_INTEGER,
-        PascalErrorCode::RANGE_REAL,
-        PascalErrorCode::STACK_OVERFLOW,
-        PascalErrorCode::TOO_MANY_LEVELS,
-        PascalErrorCode::TOO_MANY_SUBSCRIPTS,
-        PascalErrorCode::UNEXPECTED_EOF,
-        PascalErrorCode::UNEXPECTED_TOKEN,
-        PascalErrorCode::UNIMPLEMENTED,
-        PascalErrorCode::UNRECOGNIZABLE,
-        PascalErrorCode::WRONG_NUMBER_OF_PARMS,
+        CppErrorCode::ALREADY_FORWARDED,
+        CppErrorCode::CASE_CONSTANT_REUSED,
+        CppErrorCode::IDENTIFIER_REDEFINED,
+        CppErrorCode::IDENTIFIER_UNDEFINED,
+        CppErrorCode::INCOMPATIBLE_ASSIGNMENT,
+        CppErrorCode::INCOMPATIBLE_TYPES,
+        CppErrorCode::INVALID_ASSIGNMENT,
+        CppErrorCode::INVALID_CHARACTER,
+        CppErrorCode::INVALID_CONSTANT,
+        CppErrorCode::INVALID_EXPONENT,
+        CppErrorCode::INVALID_EXPRESSION,
+        CppErrorCode::INVALID_FIELD,
+        CppErrorCode::INVALID_FRACTION,
+        CppErrorCode::INVALID_IDENTIFIER_USAGE,
+        CppErrorCode::INVALID_INDEX_TYPE,
+        CppErrorCode::INVALID_NUMBER,
+        CppErrorCode::INVALID_STATEMENT,
+        CppErrorCode::INVALID_SUBRANGE_TYPE,
+        CppErrorCode::INVALID_TARGET,
+        CppErrorCode::INVALID_TYPE,
+        CppErrorCode::INVALID_VAR_PARM,
+        CppErrorCode::MIN_GT_MAX,
+        CppErrorCode::MISSING_BEGIN,
+        CppErrorCode::MISSING_COLON,
+        CppErrorCode::MISSING_COLON_EQUALS,
+        CppErrorCode::MISSING_COMMA,
+        CppErrorCode::MISSING_CONSTANT,
+        CppErrorCode::MISSING_DO,
+        CppErrorCode::MISSING_DOT_DOT,
+        CppErrorCode::MISSING_END,
+        CppErrorCode::MISSING_EQUALS,
+        CppErrorCode::MISSING_FOR_CONTROL,
+        CppErrorCode::MISSING_IDENTIFIER,
+        CppErrorCode::MISSING_LEFT_BRACKET,
+        CppErrorCode::MISSING_OF,
+        CppErrorCode::MISSING_PERIOD,
+        CppErrorCode::MISSING_PROGRAM,
+        CppErrorCode::MISSING_RIGHT_BRACKET,
+        CppErrorCode::MISSING_RIGHT_PAREN,
+        CppErrorCode::MISSING_SEMICOLON,
+        CppErrorCode::MISSING_THEN,
+        CppErrorCode::MISSING_TO_DOWNTO,
+        CppErrorCode::MISSING_UNTIL,
+        CppErrorCode::MISSING_VARIABLE,
+        CppErrorCode::NOT_CONSTANT_IDENTIFIER,
+        CppErrorCode::NOT_RECORD_VARIABLE,
+        CppErrorCode::NOT_TYPE_IDENTIFIER,
+        CppErrorCode::RANGE_INTEGER,
+        CppErrorCode::RANGE_REAL,
+        CppErrorCode::STACK_OVERFLOW,
+        CppErrorCode::TOO_MANY_LEVELS,
+        CppErrorCode::TOO_MANY_SUBSCRIPTS,
+        CppErrorCode::UNEXPECTED_EOF,
+        CppErrorCode::UNEXPECTED_TOKEN,
+        CppErrorCode::UNIMPLEMENTED,
+        CppErrorCode::UNRECOGNIZABLE,
+        CppErrorCode::WRONG_NUMBER_OF_PARMS,
 
         // Fatal errors.
-        PascalErrorCode::IO_ERROR,
-        PascalErrorCode::TOO_MANY_ERRORS
+        CppErrorCode::IO_ERROR,
+        CppErrorCode::TOO_MANY_ERRORS
     };
 
     vector<string> error_messages =
@@ -161,4 +161,4 @@ void PascalError::initialize()
     INITIALIZED = true;
 }
 
-}}}  // namespace wci::frontend::pascal
+}}}  // namespace wci::frontend::Cpp
