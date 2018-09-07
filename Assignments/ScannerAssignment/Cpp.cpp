@@ -61,7 +61,7 @@ int main(int argc, char *args[])
         // Source path.
         if (i < argc) {
             string path = args[i];
-            Cpp(operation, path, flags);
+            Cplusplus(operation, path, flags);
         }
         else {
             throw string("Missing source file.");
@@ -75,7 +75,7 @@ int main(int argc, char *args[])
     return 0;
 }
 
-Cpp::Cpp(string operation, string file_path, string flags)
+Cplusplus::Cplusplus(string operation, string file_path, string flags)
     throw (string)
 {
     ifstream input;
@@ -102,7 +102,7 @@ Cpp::Cpp(string operation, string file_path, string flags)
     backend->process(icode, symtab);
 }
 
-Cpp::~Cpp()
+Cplusplus::~Cplusplus()
 {
     if (parser  != nullptr) delete parser;
     if (source  != nullptr) delete source;
@@ -111,34 +111,34 @@ Cpp::~Cpp()
     if (backend != nullptr) delete backend;
 }
 
-const string Cpp::SOURCE_LINE_FORMAT = "%03d %s\n";
+const string Cplusplus::SOURCE_LINE_FORMAT = "%03d %s\n";
 
-const string Cpp::PARSER_SUMMARY_FORMAT =
+const string Cplusplus::PARSER_SUMMARY_FORMAT =
     string("\n%20d source lines.\n%20d syntax errors.\n") +
     string("%20.2f seconds total parsing time.\n");
 
-const string Cpp::INTERPRETER_SUMMARY_FORMAT =
+const string Cplusplus::INTERPRETER_SUMMARY_FORMAT =
     string("\n%20d statements executed.\n") +
     string("%20d runtime errors.\n") +
     string("%20.2f seconds total execution time.\n");
 
-const string Cpp::COMPILER_SUMMARY_FORMAT =
+const string Cplusplus::COMPILER_SUMMARY_FORMAT =
     string("\n%20d instructions generated.\n") +
     string("%20.2f seconds total code generation time.\n");
 
-const string Cpp::TOKEN_FORMAT =
+const string Cplusplus::TOKEN_FORMAT =
     ">>> %-15s line=%03d, pos=%2d, text=\"%s\"\n";
 
-const string Cpp::VALUE_FORMAT =
+const string Cplusplus::VALUE_FORMAT =
     ">>>                 value=%s\n";
 
-const int Cpp::PREFIX_WIDTH = 5;
+const int Cplusplus::PREFIX_WIDTH = 5;
 
 /**
  * Listen for messages.
  * @param message the received message.
  */
-void Cpp::message_received(Message& message)
+void Cplusplus::message_received(Message& message)
 {
     MessageType type = message.get_type();
 
