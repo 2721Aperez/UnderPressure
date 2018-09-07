@@ -1,18 +1,18 @@
 /**
- * <h1>PascalWordToken</h1>
+ * <h1>CppWordToken</h1>
  *
- * <p> Pascal word tokens (identifiers and reserved words).</p>
+ * <p> Cpp word tokens (identifiers and reserved words).</p>
  *
- * <p>Copyright (c) 2017 by Ronald Mak</p>
+ * <p>Copyright (c) 2017 by Ronald Mak and Under Pressure </p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-#ifndef WCI_FRONTEND_PASCAL_TOKENS_PASCALWORDTOKEN_H_
-#define WCI_FRONTEND_PASCAL_TOKENS_PASCALWORDTOKEN_H_
+#ifndef WCI_FRONTEND_CPP_TOKENS_CPPWORDTOKEN_H_
+#define WCI_FRONTEND_CPP_TOKENS_CPPWORDTOKEN_H_
 
 #include <string>
 #include "../CppToken.h"
 
-namespace wci { namespace frontend { namespace pascal { namespace tokens {
+namespace wci { namespace frontend { namespace Cpp { namespace tokens {
 
 using namespace std;
 using namespace wci::frontend::Cpp;
