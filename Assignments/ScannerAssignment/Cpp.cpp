@@ -1,7 +1,7 @@
 /**
- * <h1>Pascal</h1>
+ * <h1>Cpp</h1>
  *
- * <p>Compile or interpret a Pascal source program.</p>
+ * <p>Compile or interpret a Cpp source program.</p>
  *
  * <p>Copyright (c) 2017 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
@@ -10,12 +10,12 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "Pascal.h"
+#include "Cpp.h"
 #include "wci/frontend/Parser.h"
 #include "wci/frontend/Scanner.h"
 #include "wci/frontend/Source.h"
 #include "wci/frontend/FrontendFactory.h"
-#include "wci/frontend/pascal/PascalToken.h"
+#include "wci/frontend/Cpp/CppToken.h"
 #include "wci/intermediate/SymTab.h"
 #include "wci/intermediate/ICode.h"
 #include "wci/backend/Backend.h"
@@ -25,14 +25,14 @@
 
 using namespace std;
 using namespace wci::frontend;
-using namespace wci::frontend::pascal;
+using namespace wci::frontend::Cpp;
 using namespace wci::intermediate;
 using namespace wci::backend;
 using namespace wci::message;
 
 const string FLAGS = "[-ix]";
 const string USAGE =
-    "Usage: Pascal execute|compile " + FLAGS + " <source file path>";
+    "Usage: Cpp execute|compile " + FLAGS + " <source file path>";
 
 /**
  * The main method.
@@ -61,7 +61,7 @@ int main(int argc, char *args[])
         // Source path.
         if (i < argc) {
             string path = args[i];
-            Pascal(operation, path, flags);
+            Cpp(operation, path, flags);
         }
         else {
             throw string("Missing source file.");
@@ -75,7 +75,7 @@ int main(int argc, char *args[])
     return 0;
 }
 
-Pascal::Pascal(string operation, string file_path, string flags)
+Cpp::Cpp(string operation, string file_path, string flags)
     throw (string)
 {
     ifstream input;
@@ -88,7 +88,7 @@ Pascal::Pascal(string operation, string file_path, string flags)
     source = new Source(input);
     source->add_message_listener(this);
 
-    parser = FrontendFactory::create_parser("Pascal", "top-down", source);
+    parser = FrontendFactory::create_parser("Cpp", "top-down", source);
     parser->add_message_listener(this);
     parser->parse();
 
@@ -102,7 +102,7 @@ Pascal::Pascal(string operation, string file_path, string flags)
     backend->process(icode, symtab);
 }
 
-Pascal::~Pascal()
+Cpp::~Cpp()
 {
     if (parser  != nullptr) delete parser;
     if (source  != nullptr) delete source;
@@ -111,34 +111,34 @@ Pascal::~Pascal()
     if (backend != nullptr) delete backend;
 }
 
-const string Pascal::SOURCE_LINE_FORMAT = "%03d %s\n";
+const string Cpp::SOURCE_LINE_FORMAT = "%03d %s\n";
 
-const string Pascal::PARSER_SUMMARY_FORMAT =
+const string Cpp::PARSER_SUMMARY_FORMAT =
     string("\n%20d source lines.\n%20d syntax errors.\n") +
     string("%20.2f seconds total parsing time.\n");
 
-const string Pascal::INTERPRETER_SUMMARY_FORMAT =
+const string Cpp::INTERPRETER_SUMMARY_FORMAT =
     string("\n%20d statements executed.\n") +
     string("%20d runtime errors.\n") +
     string("%20.2f seconds total execution time.\n");
 
-const string Pascal::COMPILER_SUMMARY_FORMAT =
+const string Cpp::COMPILER_SUMMARY_FORMAT =
     string("\n%20d instructions generated.\n") +
     string("%20.2f seconds total code generation time.\n");
 
-const string Pascal::TOKEN_FORMAT =
+const string Cpp::TOKEN_FORMAT =
     ">>> %-15s line=%03d, pos=%2d, text=\"%s\"\n";
 
-const string Pascal::VALUE_FORMAT =
+const string Cpp::VALUE_FORMAT =
     ">>>                 value=%s\n";
 
-const int Pascal::PREFIX_WIDTH = 5;
+const int Cpp::PREFIX_WIDTH = 5;
 
 /**
  * Listen for messages.
  * @param message the received message.
  */
-void Pascal::message_received(Message& message)
+void Cpp::message_received(Message& message)
 {
     MessageType type = message.get_type();
 

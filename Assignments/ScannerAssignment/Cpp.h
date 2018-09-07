@@ -1,13 +1,13 @@
 /**
- * <h1>Pascal</h1>
+ * <h1>Cpp</h1>
  *
- * <p>Compile or interpret a Pascal source program.</p>
+ * <p>Compile or interpret a Cpp source program.</p>
  *
- * <p>Copyright (c) 2017 by Ronald Mak</p>
+ * <p>Copyright (c) 2017 by Ronald Mak & UnderPressure</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-#ifndef PASCAL_H_
-#define PASCAL_H_
+#ifndef Cpp_H_
+#define Cpp_H_
 
 #include <iostream>
 #include <fstream>
@@ -28,23 +28,23 @@ using namespace wci::intermediate;
 using namespace wci::backend;
 using namespace wci::message;
 
-class Pascal : public MessageListener
+class Cpp : public MessageListener
 {
 public:
     /**
      * Constructor.
-     * Compile or interpret a Pascal source program.
+     * Compile or interpret a Cpp source program.
      * @param operation either "compile" or "execute".
      * @param filePath the source file path.
      * @param flags the command line flags.
      */
-    Pascal(string operation, string file_path, string flags)
+    Cpp(string operation, string file_path, string flags)
         throw (string);
 
     /**
      * Destructor.
      */
-    virtual ~Pascal();
+    virtual ~Cpp();
 
     /**
      * Receive a message sent by a message producer.
@@ -70,4 +70,4 @@ private:
     static const int PREFIX_WIDTH;
 };
 
-#endif /* PASCAL_H_ */
+#endif /* Cpp_H_ */
