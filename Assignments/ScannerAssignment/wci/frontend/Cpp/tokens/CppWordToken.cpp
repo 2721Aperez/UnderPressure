@@ -1,7 +1,7 @@
 /**
- * <h1>PascalWordToken</h1>
+ * <h1>CppWordToken</h1>
  *
- * <p> Pascal word tokens (identifiers and reserved words).</p>
+ * <p> Cpp word tokens (identifiers and reserved words).</p>
  *
  * <p>Copyright (c) 2017 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
@@ -9,26 +9,26 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include "PascalWordToken.h"
-#include "../PascalError.h"
+#include "CppWordToken.h"
+#include "../CppError.h"
 
-namespace wci { namespace frontend { namespace pascal { namespace tokens {
+namespace wci { namespace frontend { namespace Cpp { namespace tokens {
 
 using namespace std;
 using namespace wci::frontend;
-using namespace wci::frontend::pascal;
+using namespace wci::frontend::Cpp;
 
-PascalWordToken::PascalWordToken(Source *source) throw (string)
-    : PascalToken(source)
+CppWordToken::CppWordToken(Source *source) throw (string)
+    : CppToken(source)
 {
     extract();
 }
 
 /**
- * Extract a Pascal word token from the source.
+ * Extract a Cpp word token from the source.
  * @throws Exception if an error occurred.
  */
-void PascalWordToken::extract() throw (string)
+void CppWordToken::extract() throw (string)
 {
     char current_ch = current_char();
 
@@ -42,18 +42,18 @@ void PascalWordToken::extract() throw (string)
 
     // Is it a reserved word or an identifier?
     string upper_case = to_upper(text);
-    if (PascalToken::RESERVED_WORDS.find(upper_case)
-            != PascalToken::RESERVED_WORDS.end())
+    if (CppToken::RESERVED_WORDS.find(upper_case)
+            != CppToken::RESERVED_WORDS.end())
     {
         // Reserved word.
-        type = (TokenType) PascalToken::RESERVED_WORDS[upper_case];
+        type = (TokenType) CppToken::RESERVED_WORDS[upper_case];
         value = upper_case;
     }
     else
     {
         // Identifier.
-        type = (TokenType) PT_IDENTIFIER;
+        type = (TokenType) CppT_IDENTIFIER;
     }
 }
 
-}}}}  // namespace wci::frontend::pascal::tokens
+}}}}  // namespace wci::frontend::Cpp::tokens
