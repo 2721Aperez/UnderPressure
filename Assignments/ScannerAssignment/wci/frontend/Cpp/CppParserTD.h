@@ -1,40 +1,40 @@
 /**
- * <h1>PascalParserTD</h1>
+ * <h1>CppParserTD</h1>
  *
- * <p>The top-down Pascal parser.</p>
+ * <p>The top-down Cpp parser.</p>
  *
  * <p>Copyright (c) 2017 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-#ifndef WCI_FRONTEND_PASCAL_PASCALPARSERTD_H_
-#define WCI_FRONTEND_PASCAL_PASCALPARSERTD_H_
+#ifndef WCI_FRONTEND_Cpp_CppPARSERTD_H_
+#define WCI_FRONTEND_Cpp_CppPARSERTD_H_
 
 #include "../Parser.h"
 #include "../Scanner.h"
-#include "PascalErrorHandler.h"
+#include "CppErrorHandler.h"
 
-namespace wci { namespace frontend { namespace pascal {
+namespace wci { namespace frontend { namespace Cpp {
 
 using namespace std;
 using namespace wci::frontend;
 
-class PascalParserTD : public Parser
+class CppParserTD : public Parser
 {
 public:
     /**
      * Constructor.
      * @param scanner the scanner to be used with this parser.
      */
-    PascalParserTD(Scanner *scanner);
+    CppParserTD(Scanner *scanner);
 
     /**
      * Constructor for subclasses.
      * @param parent the parent parser.
      */
-    PascalParserTD(PascalParserTD *parent);
+    CppParserTD(CppParserTD *parent);
 
     /**
-     * Parse a Pascal source program and generate the symbol table
+     * Parse a Cpp source program and generate the symbol table
      * and the intermediate code.
      * Implementation of wci::frontend::Parser.
      * @throw a string message if an error occurred.
@@ -49,10 +49,10 @@ public:
     int get_error_count() const;
 
 protected:
-    static PascalErrorHandler error_handler;
+    static CppErrorHandler error_handler;
 };
 
-}}} // namespace wci::frontend::pascal
+}}} // namespace wci::frontend::Cpp
 
 
-#endif /* WCI_FRONTEND_PASCAL_PASCALPARSERTD_H_ */
+#endif /* WCI_FRONTEND_Cpp_CppPARSERTD_H_ */
