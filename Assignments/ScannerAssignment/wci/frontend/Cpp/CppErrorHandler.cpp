@@ -1,32 +1,32 @@
 /**
- * <h1>PascalErrorHandler</h1>
+ * <h1>CppErrorHandler</h1>
  *
- * <p>Error handler Pascal syntax errors.</p>
+ * <p>Error handler Cpp syntax errors.</p>
  *
  * <p>Copyright (c) 2017 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-#include "PascalErrorHandler.h"
+#include "CppErrorHandler.h"
 #include "../Token.h"
 #include "../Parser.h"
-#include "PascalError.h"
+#include "CppError.h"
 #include "../../message/Message.h"
 
-namespace wci { namespace frontend { namespace pascal {
+namespace wci { namespace frontend { namespace Cpp {
 
 using namespace std;
 using namespace wci::frontend;
 
-const int PascalErrorHandler::MAX_ERRORS = 25;
-int PascalErrorHandler::error_count = 0;
+const int CppErrorHandler::MAX_ERRORS = 25;
+int CppErrorHandler::error_count = 0;
 
-int PascalErrorHandler::get_error_count() const { return error_count; }
+int CppErrorHandler::get_error_count() const { return error_count; }
 
-void PascalErrorHandler::flag(Token *token, PascalErrorCode error_code,
+void CppErrorHandler::flag(Token *token, CppErrorCode error_code,
                               Parser *parser)
 {
     // Notify the parser's listeners.
-    string error_message = PascalError::SYNTAX_ERROR_MESSAGES[error_code];
+    string error_message = CppError::SYNTAX_ERROR_MESSAGES[error_code];
     Message message(SYNTAX_ERROR,
                     LINE_NUMBER, to_string(token->get_line_number()),
                     POSITION, to_string(token->get_position()),
@@ -40,12 +40,12 @@ void PascalErrorHandler::flag(Token *token, PascalErrorCode error_code,
     }
 }
 
-void PascalErrorHandler::abort_translation(PascalErrorCode error_code,
+void CppErrorHandler::abort_translation(CppErrorCode error_code,
                                            Parser *parser)
 {
     // Notify the parser's listeners and then abort.
     string error_message = "FATAL ERROR: " +
-                           PascalError::SYNTAX_ERROR_MESSAGES[error_code];
+                           CppError::SYNTAX_ERROR_MESSAGES[error_code];
     Message message(SYNTAX_ERROR,
                     LINE_NUMBER, "0",
                     POSITION, "0",
@@ -55,4 +55,4 @@ void PascalErrorHandler::abort_translation(PascalErrorCode error_code,
     exit(-2);
 }
 
-}}}  // namespace wci::frontend::pascal
+}}}  // namespace wci::frontend::Cpp
