@@ -30,7 +30,7 @@ CppParserTD::CppParserTD(Scanner *scanner) : Parser(scanner)
     CppError::initialize();
 }
 
-CppParserTD::PCppParserTD(CppParserTD *parent)
+CppParserTD::CppParserTD(CppParserTD *parent)
     : Parser(parent->get_scanner())
 {
 }
@@ -53,35 +53,35 @@ void CppParserTD::parse() throw (string)
 
         switch ((CppTokenType) token_type)
         {
-            case PT_STRING:
+            case CppT_STRING:
             {
                 type_str = "STRING";
                 value_str = cast(value, string);
                 break;
             }
 
-            case PT_IDENTIFIER:
+            case CppT_IDENTIFIER:
             {
                 type_str = "IDENTIFIER";
                 value_str = "";
                 break;
             }
 
-            case PT_INTEGER:
+            case CppT_INTEGER:
             {
                 type_str = "INTEGER";
                 value_str = to_string(cast(value, int));
                 break;
             }
 
-            case PT_REAL:
+            case CppT_REAL:
             {
                 type_str = "REAL";
                 value_str = to_string(cast(value, float));
                 break;
             }
 
-            case PT_ERROR: break;
+            case CppT_ERROR: break;
 
             default:  // reserved word or special character
             {
@@ -104,7 +104,7 @@ void CppParserTD::parse() throw (string)
             }
         }
 
-        if (token_type != (TokenType) PT_ERROR)
+        if (token_type != (TokenType) CppT_ERROR)
         {
             // Format and send a message about each token.
             Message message(TOKEN,
