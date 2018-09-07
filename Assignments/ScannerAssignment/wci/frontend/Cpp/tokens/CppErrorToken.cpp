@@ -11,7 +11,7 @@
 #include "../../Token.h"
 #include "../CppToken.h"
 
-namespace wci { namespace frontend { namespace cpp { namespace tokens {
+namespace wci { namespace frontend { namespace Cpp { namespace tokens {
     
     using namespace std;
     using namespace wci::frontend::cpp;
@@ -31,4 +31,4 @@ namespace wci { namespace frontend { namespace cpp { namespace tokens {
         // do nothing
     }
     
-}}}}  // namespace wci::frontend::cpp::tokens
+}}}}  // namespace wci::frontend::Cpp::tokens
