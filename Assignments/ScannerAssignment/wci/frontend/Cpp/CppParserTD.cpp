@@ -1,41 +1,41 @@
 /**
- * <h1>PascalParserTD</h1>
+ * <h1>CppParserTD</h1>
  *
- * <p>The top-down Pascal parser.</p>
+ * <p>The top-down Cpp parser.</p>
  *
  * <p>Copyright (c) 2017 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
 #include <chrono>
-#include "PascalParserTD.h"
+#include "CppParserTD.h"
 
 #include "../Scanner.h"
 #include "../Source.h"
 #include "../Token.h"
-#include "PascalToken.h"
-#include "PascalError.h"
+#include "CppToken.h"
+#include "CppError.h"
 #include "../../message/Message.h"
 
-namespace wci { namespace frontend { namespace pascal {
+namespace wci { namespace frontend { namespace Cpp {
 
 using namespace std;
 using namespace std::chrono;
 using namespace wci::frontend;
 using namespace wci::message;
 
-PascalErrorHandler PascalParserTD::error_handler;
+CppErrorHandler CppParserTD::error_handler;
 
-PascalParserTD::PascalParserTD(Scanner *scanner) : Parser(scanner)
+CppParserTD::CppParserTD(Scanner *scanner) : Parser(scanner)
 {
-    PascalError::initialize();
+    CppError::initialize();
 }
 
-PascalParserTD::PascalParserTD(PascalParserTD *parent)
+CppParserTD::PCppParserTD(CppParserTD *parent)
     : Parser(parent->get_scanner())
 {
 }
 
-void PascalParserTD::parse() throw (string)
+void CppParserTD::parse() throw (string)
 {
     Token *token = nullptr;
     int last_line_number;
@@ -51,7 +51,7 @@ void PascalParserTD::parse() throw (string)
         string type_str;
         string value_str;
 
-        switch ((PascalTokenType) token_type)
+        switch ((CppTokenType) token_type)
         {
             case PT_STRING:
             {
@@ -96,8 +96,8 @@ void PascalParserTD::parse() throw (string)
                 else
                 {
                     type_str =
-                        PascalToken::SPECIAL_SYMBOL_NAMES[
-                                           (PascalTokenType) token_type];
+                        CppToken::SPECIAL_SYMBOL_NAMES[
+                                           (CppTokenType) token_type];
                 }
 
                 break;
@@ -117,8 +117,8 @@ void PascalParserTD::parse() throw (string)
         }
         else
         {
-            PascalErrorCode error_code =
-                                    (PascalErrorCode) cast(value, int);
+            CppErrorCode error_code =
+                                    (CppErrorCode) cast(value, int);
             error_handler.flag(token, error_code, this);
         }
     }
@@ -134,9 +134,9 @@ void PascalParserTD::parse() throw (string)
     send_message(message);
 }
 
-int PascalParserTD::get_error_count() const
+int CppParserTD::get_error_count() const
 {
     return error_handler.get_error_count();
 }
 
-}}} // namespace wci::frontend::pascal
+}}} // namespace wci::frontend::Cpp
