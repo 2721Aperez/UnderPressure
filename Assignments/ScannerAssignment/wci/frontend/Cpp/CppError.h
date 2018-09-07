@@ -1,25 +1,25 @@
 /**
- * <h1>PascalError</h1>
+ * <h1>CppError</h1>
  *
- * <p>Pascal translation errors.</p>
+ * <p>Cpp translation errors.</p>
  *
  * <p>Copyright (c) 2017 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-#ifndef WCI_FRONTEND_PASCAL_PASCALERROR_H_
-#define WCI_FRONTEND_PASCAL_PASCALERROR_H_
+#ifndef WCI_FRONTEND_CPP_CPPERROR_H_
+#define WCI_FRONTEND_CPP_CPPERROR_H_
 
 #include <string>
 #include <map>
 
-namespace wci { namespace frontend { namespace pascal {
+namespace wci { namespace frontend { namespace Cpp {
 
 using namespace std;
 
 /**
- * Pascal error codes.
+ * Cpp error codes.
  */
-enum class PascalErrorCode
+enum class CppErrorCode
 {
     ALREADY_FORWARDED,
     CASE_CONSTANT_REUSED,
@@ -84,71 +84,71 @@ enum class PascalErrorCode
     TOO_MANY_ERRORS
 };
 
-constexpr PascalErrorCode ALREADY_FORWARDED = PascalErrorCode::ALREADY_FORWARDED;
-constexpr PascalErrorCode CASE_CONSTANT_REUSED = PascalErrorCode::CASE_CONSTANT_REUSED;
-constexpr PascalErrorCode IDENTIFIER_REDEFINED = PascalErrorCode::IDENTIFIER_REDEFINED;
-constexpr PascalErrorCode IDENTIFIER_UNDEFINED = PascalErrorCode::IDENTIFIER_UNDEFINED;
-constexpr PascalErrorCode INCOMPATIBLE_ASSIGNMENT = PascalErrorCode::INCOMPATIBLE_ASSIGNMENT;
-constexpr PascalErrorCode INCOMPATIBLE_TYPES = PascalErrorCode::INCOMPATIBLE_TYPES;
-constexpr PascalErrorCode INVALID_ASSIGNMENT = PascalErrorCode::INVALID_ASSIGNMENT;
-constexpr PascalErrorCode INVALID_CHARACTER = PascalErrorCode::INVALID_CHARACTER;
-constexpr PascalErrorCode INVALID_CONSTANT = PascalErrorCode::INVALID_CONSTANT;
-constexpr PascalErrorCode INVALID_EXPONENT = PascalErrorCode::INVALID_EXPONENT;
-constexpr PascalErrorCode INVALID_EXPRESSION = PascalErrorCode::INVALID_EXPRESSION;
-constexpr PascalErrorCode INVALID_FIELD = PascalErrorCode::INVALID_FIELD;
-constexpr PascalErrorCode INVALID_FRACTION = PascalErrorCode::INVALID_FRACTION;
-constexpr PascalErrorCode INVALID_IDENTIFIER_USAGE = PascalErrorCode::INVALID_IDENTIFIER_USAGE;
-constexpr PascalErrorCode INVALID_INDEX_TYPE = PascalErrorCode::INVALID_INDEX_TYPE;
-constexpr PascalErrorCode INVALID_NUMBER = PascalErrorCode::INVALID_NUMBER;
-constexpr PascalErrorCode INVALID_STATEMENT = PascalErrorCode::INVALID_STATEMENT;
-constexpr PascalErrorCode INVALID_SUBRANGE_TYPE = PascalErrorCode::INVALID_SUBRANGE_TYPE;
-constexpr PascalErrorCode INVALID_TARGET = PascalErrorCode::INVALID_TARGET;
-constexpr PascalErrorCode INVALID_TYPE = PascalErrorCode::INVALID_TYPE;
-constexpr PascalErrorCode INVALID_VAR_PARM = PascalErrorCode::INVALID_VAR_PARM;
-constexpr PascalErrorCode MIN_GT_MAX = PascalErrorCode::MIN_GT_MAX;
-constexpr PascalErrorCode MISSING_BEGIN = PascalErrorCode::MISSING_BEGIN;
-constexpr PascalErrorCode MISSING_COLON = PascalErrorCode::MISSING_COLON;
-constexpr PascalErrorCode MISSING_COMMA = PascalErrorCode::MISSING_COMMA;
-constexpr PascalErrorCode MISSING_CONSTANT = PascalErrorCode::MISSING_CONSTANT;
-constexpr PascalErrorCode MISSING_DO = PascalErrorCode::MISSING_DO;
-constexpr PascalErrorCode MISSING_DOT_DOT = PascalErrorCode::MISSING_DOT_DOT;
-constexpr PascalErrorCode MISSING_END = PascalErrorCode::MISSING_END;
-constexpr PascalErrorCode MISSING_EQUALS = PascalErrorCode::MISSING_EQUALS;
-constexpr PascalErrorCode MISSING_COLON_EQUALS = PascalErrorCode::MISSING_COLON_EQUALS;
-constexpr PascalErrorCode MISSING_FOR_CONTROL = PascalErrorCode::MISSING_FOR_CONTROL;
-constexpr PascalErrorCode MISSING_IDENTIFIER = PascalErrorCode::MISSING_IDENTIFIER;
-constexpr PascalErrorCode MISSING_LEFT_BRACKET = PascalErrorCode::MISSING_LEFT_BRACKET;
-constexpr PascalErrorCode MISSING_OF = PascalErrorCode::MISSING_OF;
-constexpr PascalErrorCode MISSING_PERIOD = PascalErrorCode::MISSING_PERIOD;
-constexpr PascalErrorCode MISSING_PROGRAM = PascalErrorCode::MISSING_PROGRAM;
-constexpr PascalErrorCode MISSING_RIGHT_BRACKET = PascalErrorCode::MISSING_RIGHT_BRACKET;
-constexpr PascalErrorCode MISSING_RIGHT_PAREN = PascalErrorCode::MISSING_RIGHT_PAREN;
-constexpr PascalErrorCode MISSING_SEMICOLON = PascalErrorCode::MISSING_SEMICOLON;
-constexpr PascalErrorCode MISSING_THEN = PascalErrorCode::MISSING_THEN;
-constexpr PascalErrorCode MISSING_TO_DOWNTO = PascalErrorCode::MISSING_TO_DOWNTO;
-constexpr PascalErrorCode MISSING_UNTIL = PascalErrorCode::MISSING_UNTIL;
-constexpr PascalErrorCode MISSING_VARIABLE = PascalErrorCode::MISSING_VARIABLE;
-constexpr PascalErrorCode NOT_CONSTANT_IDENTIFIER = PascalErrorCode::NOT_CONSTANT_IDENTIFIER;
-constexpr PascalErrorCode NOT_RECORD_VARIABLE = PascalErrorCode::NOT_RECORD_VARIABLE;
-constexpr PascalErrorCode NOT_TYPE_IDENTIFIER = PascalErrorCode::NOT_TYPE_IDENTIFIER;
-constexpr PascalErrorCode RANGE_INTEGER = PascalErrorCode::RANGE_INTEGER;
-constexpr PascalErrorCode RANGE_REAL = PascalErrorCode::RANGE_REAL;
-constexpr PascalErrorCode STACK_OVERFLOW = PascalErrorCode::STACK_OVERFLOW;
-constexpr PascalErrorCode TOO_MANY_LEVELS = PascalErrorCode::TOO_MANY_LEVELS;
-constexpr PascalErrorCode TOO_MANY_SUBSCRIPTS = PascalErrorCode::TOO_MANY_SUBSCRIPTS;
-constexpr PascalErrorCode UNEXPECTED_EOF = PascalErrorCode::UNEXPECTED_EOF;
-constexpr PascalErrorCode UNEXPECTED_TOKEN = PascalErrorCode::UNEXPECTED_TOKEN;
-constexpr PascalErrorCode UNIMPLEMENTED = PascalErrorCode::UNIMPLEMENTED;
-constexpr PascalErrorCode UNRECOGNIZABLE = PascalErrorCode::UNRECOGNIZABLE;
-constexpr PascalErrorCode WRONG_NUMBER_OF_PARMS = PascalErrorCode::WRONG_NUMBER_OF_PARMS;
+constexpr CppErrorCode ALREADY_FORWARDED = CppErrorCode::ALREADY_FORWARDED;
+constexpr CppErrorCode CASE_CONSTANT_REUSED = CppErrorCode::CASE_CONSTANT_REUSED;
+constexpr CppErrorCode IDENTIFIER_REDEFINED = CppErrorCode::IDENTIFIER_REDEFINED;
+constexpr CppErrorCode IDENTIFIER_UNDEFINED = CppErrorCode::IDENTIFIER_UNDEFINED;
+constexpr CppErrorCode INCOMPATIBLE_ASSIGNMENT = CppErrorCode::INCOMPATIBLE_ASSIGNMENT;
+constexpr CppErrorCode INCOMPATIBLE_TYPES = CppErrorCode::INCOMPATIBLE_TYPES;
+constexpr CppErrorCode INVALID_ASSIGNMENT = CppErrorCode::INVALID_ASSIGNMENT;
+constexpr CppErrorCode INVALID_CHARACTER = CppErrorCode::INVALID_CHARACTER;
+constexpr CppErrorCode INVALID_CONSTANT = CppErrorCode::INVALID_CONSTANT;
+constexpr CppErrorCode INVALID_EXPONENT = CppErrorCode::INVALID_EXPONENT;
+constexpr CppErrorCode INVALID_EXPRESSION = CppErrorCode::INVALID_EXPRESSION;
+constexpr CppErrorCode INVALID_FIELD = CppErrorCode::INVALID_FIELD;
+constexpr CppErrorCode INVALID_FRACTION = CppErrorCode::INVALID_FRACTION;
+constexpr CppErrorCode INVALID_IDENTIFIER_USAGE = CppErrorCode::INVALID_IDENTIFIER_USAGE;
+constexpr CppErrorCode INVALID_INDEX_TYPE = CppErrorCode::INVALID_INDEX_TYPE;
+constexpr CppErrorCode INVALID_NUMBER = CppErrorCode::INVALID_NUMBER;
+constexpr CppErrorCode INVALID_STATEMENT = CppErrorCode::INVALID_STATEMENT;
+constexpr CppErrorCode INVALID_SUBRANGE_TYPE = CppErrorCode::INVALID_SUBRANGE_TYPE;
+constexpr CppErrorCode INVALID_TARGET = CppErrorCode::INVALID_TARGET;
+constexpr CppErrorCode INVALID_TYPE = CppErrorCode::INVALID_TYPE;
+constexpr CppErrorCode INVALID_VAR_PARM = CppErrorCode::INVALID_VAR_PARM;
+constexpr CppErrorCode MIN_GT_MAX = CppErrorCode::MIN_GT_MAX;
+constexpr CppErrorCode MISSING_BEGIN = CppErrorCode::MISSING_BEGIN;
+constexpr CppErrorCode MISSING_COLON = CppErrorCode::MISSING_COLON;
+constexpr CppErrorCode MISSING_COMMA = CppErrorCode::MISSING_COMMA;
+constexpr CppErrorCode MISSING_CONSTANT = CppErrorCode::MISSING_CONSTANT;
+constexpr CppErrorCode MISSING_DO = CppErrorCode::MISSING_DO;
+constexpr CppErrorCode MISSING_DOT_DOT = CppErrorCode::MISSING_DOT_DOT;
+constexpr CppErrorCode MISSING_END = CppErrorCode::MISSING_END;
+constexpr CppErrorCode MISSING_EQUALS = CppErrorCode::MISSING_EQUALS;
+constexpr CppErrorCode MISSING_COLON_EQUALS = CppErrorCode::MISSING_COLON_EQUALS;
+constexpr CppErrorCode MISSING_FOR_CONTROL = CppErrorCode::MISSING_FOR_CONTROL;
+constexpr CppErrorCode MISSING_IDENTIFIER = CppErrorCode::MISSING_IDENTIFIER;
+constexpr CppErrorCode MISSING_LEFT_BRACKET = CppErrorCode::MISSING_LEFT_BRACKET;
+constexpr CppErrorCode MISSING_OF = CppErrorCode::MISSING_OF;
+constexpr CppErrorCode MISSING_PERIOD = CppErrorCode::MISSING_PERIOD;
+constexpr CppErrorCode MISSING_PROGRAM = CppErrorCode::MISSING_PROGRAM;
+constexpr CppErrorCode MISSING_RIGHT_BRACKET = CppErrorCode::MISSING_RIGHT_BRACKET;
+constexpr CppErrorCode MISSING_RIGHT_PAREN = CppErrorCode::MISSING_RIGHT_PAREN;
+constexpr CppErrorCode MISSING_SEMICOLON = CppErrorCode::MISSING_SEMICOLON;
+constexpr CppErrorCode MISSING_THEN = CppErrorCode::MISSING_THEN;
+constexpr CppErrorCode MISSING_TO_DOWNTO = CppErrorCode::MISSING_TO_DOWNTO;
+constexpr CppErrorCode MISSING_UNTIL = CppErrorCode::MISSING_UNTIL;
+constexpr CppErrorCode MISSING_VARIABLE = CppErrorCode::MISSING_VARIABLE;
+constexpr CppErrorCode NOT_CONSTANT_IDENTIFIER = CppErrorCode::NOT_CONSTANT_IDENTIFIER;
+constexpr CppErrorCode NOT_RECORD_VARIABLE = CppErrorCode::NOT_RECORD_VARIABLE;
+constexpr CppErrorCode NOT_TYPE_IDENTIFIER = CppErrorCode::NOT_TYPE_IDENTIFIER;
+constexpr CppErrorCode RANGE_INTEGER = CppErrorCode::RANGE_INTEGER;
+constexpr CppErrorCode RANGE_REAL = CppErrorCode::RANGE_REAL;
+constexpr CppErrorCode STACK_OVERFLOW = CppErrorCode::STACK_OVERFLOW;
+constexpr CppErrorCode TOO_MANY_LEVELS = CppErrorCode::TOO_MANY_LEVELS;
+constexpr CppErrorCode TOO_MANY_SUBSCRIPTS = CppErrorCode::TOO_MANY_SUBSCRIPTS;
+constexpr CppErrorCode UNEXPECTED_EOF = CppErrorCode::UNEXPECTED_EOF;
+constexpr CppErrorCode UNEXPECTED_TOKEN = CppErrorCode::UNEXPECTED_TOKEN;
+constexpr CppErrorCode UNIMPLEMENTED = CppErrorCode::UNIMPLEMENTED;
+constexpr CppErrorCode UNRECOGNIZABLE = CppErrorCode::UNRECOGNIZABLE;
+constexpr CppErrorCode WRONG_NUMBER_OF_PARMS = CppErrorCode::WRONG_NUMBER_OF_PARMS;
 
-constexpr PascalErrorCode IO_ERROR = PascalErrorCode::IO_ERROR;
-constexpr PascalErrorCode TOO_MANY_ERRORS = PascalErrorCode::TOO_MANY_ERRORS;
+constexpr CppErrorCode IO_ERROR = CppErrorCode::IO_ERROR;
+constexpr CppErrorCode TOO_MANY_ERRORS = CppErrorCode::TOO_MANY_ERRORS;
 
-class PascalError
+class CppError
 {
 public:
-    static map<PascalErrorCode, string> SYNTAX_ERROR_MESSAGES;
+    static map<CppErrorCode, string> SYNTAX_ERROR_MESSAGES;
 
     /**
      * Initialize the static map.
@@ -159,6 +159,6 @@ private:
     static bool INITIALIZED;
 };
 
-}}}  // namespace wci::frontend::pascal
+}}}  // namespace wci::frontend::Cpp
 
-#endif /* WCI_FRONTEND_PASCAL_PASCALERROR_H_ */
+#endif /* WCI_FRONTEND_Cpp_CppERROR_H_ */

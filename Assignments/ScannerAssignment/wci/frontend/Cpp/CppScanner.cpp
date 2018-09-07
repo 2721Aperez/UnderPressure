@@ -17,11 +17,11 @@
 #include "tokens/CppSpecialSymbolToken.h"
 #include "tokens/CppErrorToken.h"
 
-namespace wci { namespace frontend { namespace pascal {
+namespace wci { namespace frontend { namespace Cpp {
 
 using namespace std;
 using namespace wci::frontend;
-using namespace wci::frontend::pascal::tokens;
+using namespace wci::frontend::Cpp::tokens;
 
 CppScanner::CppScanner(Source *source) : Scanner(source)
 {
@@ -96,4 +96,4 @@ void CppScanner::skip_white_space() throw (string)
     }
 }
 
-}}} // namespace wci::frontend::pascal
+}}} // namespace wci::frontend::Cpp
