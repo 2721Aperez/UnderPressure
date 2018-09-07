@@ -6,8 +6,8 @@
  * <p>Copyright (c) 2017 by Ronald Mak & UnderPressure</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-#ifndef Cpp_H_
-#define Cpp_H_
+#ifndef CPP_H_
+#define CPP_H_
 
 #include <iostream>
 #include <fstream>

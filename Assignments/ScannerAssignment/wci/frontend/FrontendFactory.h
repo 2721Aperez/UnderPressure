@@ -10,7 +10,7 @@
 #define WCI_FRONTEND_FRONTENDFACTORY_H_
 
 #include <string>
-#include "Cpp.h"
+#include "Parser.h"
 #include "Source.h"
 
 namespace wci { namespace frontend {
