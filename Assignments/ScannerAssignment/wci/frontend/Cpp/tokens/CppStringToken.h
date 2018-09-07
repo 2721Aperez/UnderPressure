@@ -13,29 +13,30 @@
 #include "../CppToken.h"
 
 namespace wci { namespace frontend { namespace Cpp { namespace tokens {
-
-using namespace std;
-using namespace wci::frontend::Cpp;
-
-class CppStringToken : public CppToken
-{
-public:
-    /**
-     * Constructor.
-     * @param source the source from where to fetch the token's characters.
-     * @throw a string message if an error occurred.
-     */
-    CppStringToken(Source *source) throw (string);
-
-protected:
-    /**
-     * Extract a Cpp string token from the source.
-     * Override of wci::frontend::Token.
-     * @throw a string message if an error occurred.
-     */
-    void extract() throw (string);
-};
-
+    
+    using namespace std;
+    using namespace wci::frontend::Cpp;
+    
+    class CppStringToken : public CppToken
+    {
+    public:
+        /**
+         * Constructor.
+         * @param source the source from where to fetch the token's characters.
+         * @throw a string message if an error occurred.
+         */
+        CppStringToken(Source *source) throw (string);
+        
+    protected:
+        /**
+         * Extract a Cpp string token from the source.
+         * Override of wci::frontend::Token.
+         * @throw a string message if an error occurred.
+         */
+        void extract() throw (string);
+    };
+    
 }}}}  // namespace wci::frontend::Cpp::tokens
 
-#endif /* WCI_FRONTEND_Cpp_TOKENS_CPPSTRINGTOKEN_H_ */
+#endif /* WCI_FRONTEND_CPP_TOKENS_CPPSTRINGTOKEN_H_ */
+
