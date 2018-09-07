@@ -1,21 +1,21 @@
 /**
- * <h1>PascalScanner</h1>
+ * <h1>CppScanner</h1>
  *
- * <p>The Pascal scanner.</p>
+ * <p>The Cpp scanner.</p>
  *
  * <p>Copyright (c) 2017 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
 #include <iostream>
-#include "PascalScanner.h"
-#include "PascalToken.h"
-#include "PascalError.h"
+#include "CppScanner.h"
+#include "CppToken.h"
+#include "CppError.h"
 #include "../Source.h"
-#include "tokens/PascalWordToken.h"
-#include "tokens/PascalNumberToken.h"
-#include "tokens/PascalStringToken.h"
-#include "tokens/PascalSpecialSymbolToken.h"
-#include "tokens/PascalErrorToken.h"
+#include "tokens/CppWordToken.h"
+#include "tokens/CppNumberToken.h"
+#include "tokens/CppStringToken.h"
+#include "tokens/CppSpecialSymbolToken.h"
+#include "tokens/CppErrorToken.h"
 
 namespace wci { namespace frontend { namespace pascal {
 
@@ -23,11 +23,11 @@ using namespace std;
 using namespace wci::frontend;
 using namespace wci::frontend::pascal::tokens;
 
-PascalScanner::PascalScanner(Source *source) : Scanner(source)
+CppScanner::CppScanner(Source *source) : Scanner(source)
 {
 }
 
-Token *PascalScanner::extract_token() throw (string)
+Token *CppScanner::extract_token() throw (string)
 {
     skip_white_space();
 
@@ -45,31 +45,31 @@ Token *PascalScanner::extract_token() throw (string)
     }
     else if (isalpha(current_ch))
     {
-        token = new PascalWordToken(source);
+        token = new CppWordToken(source);
     }
     else if (isdigit(current_ch))
     {
-        token = new PascalNumberToken(source);
+        token = new CppNumberToken(source);
     }
     else if (current_ch == '\'')
     {
-        token = new PascalStringToken(source);
+        token = new CppStringToken(source);
     }
-    else if (PascalToken::SPECIAL_SYMBOLS.find(string_ch)
-                != PascalToken::SPECIAL_SYMBOLS.end())
+    else if (CppToken::SPECIAL_SYMBOLS.find(string_ch)
+                != CppToken::SPECIAL_SYMBOLS.end())
     {
-        token = new PascalSpecialSymbolToken(source);
+        token = new CppSpecialSymbolToken(source);
     }
     else
     {
-        token = new PascalErrorToken(source, INVALID_CHARACTER, string_ch);
+        token = new CppErrorToken(source, INVALID_CHARACTER, string_ch);
         next_char();  // consume character
     }
 
     return token;
 }
 
-void PascalScanner::skip_white_space() throw (string)
+void CppScanner::skip_white_space() throw (string)
 {
     char current_ch = current_char();
 
