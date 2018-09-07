@@ -1,119 +1,120 @@
 /**
- * <h1>PascalSpecialSymbolToken</h1>
+ * <h1>CppSpecialSymbolToken</h1>
  *
- * <p> Pascal special symbol tokens.</p>
+ * <p> Cpp special symbol tokens.</p>
  *
- * <p>Copyright (c) 2017 by Ronald Mak</p>
+ * <p>Copyright (c) 2017 by Ronald Mak & Under Pressure</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
+#include "CppSpecialSymbolToken.h"
+
 #include <string>
-#include "PascalSpecialSymbolToken.h"
-#include "../PascalError.h"
+#include "../CppError.h"
 
-namespace wci { namespace frontend { namespace pascal { namespace tokens {
-
-using namespace std;
-using namespace wci::frontend;
-using namespace wci::frontend::pascal;
-
-PascalSpecialSymbolToken::PascalSpecialSymbolToken(Source *source) throw (string)
-    : PascalToken(source)
-{
-    extract();
-}
-
-void PascalSpecialSymbolToken::extract() throw (string)
-{
-    char current_ch = current_char();
-    bool good_symbol = true;
-
-    text = current_ch;
-
-    switch (current_ch)
+namespace wci { namespace frontend { namespace Cpp { namespace tokens {
+    
+    using namespace std;
+    using namespace wci::frontend;
+    using namespace wci::frontend::Cpp;
+    
+    CppSpecialSymbolToken::CppSpecialSymbolToken(Source *source) throw (string)
+    : CppToken(source)
     {
-        // Single-character special symbols.
-        case '+':  case '-':  case '*':  case '/':  case ',':
-        case ';':  case '\'': case '=':  case '(':  case ')':
-        case '[':  case ']':  case '{':  case '}':  case '^':
+        extract();
+    }
+    
+    void CppSpecialSymbolToken::extract() throw (string)
+    {
+        char current_ch = current_char();
+        bool good_symbol = true;
+        
+        text = current_ch;
+        
+        switch (current_ch)
         {
-            next_char();  // consume character
-            break;
-        }
-
-        // : or :=
-        case ':':
-        {
-            current_ch = next_char();  // consume ':';
-
-            if (current_ch == '=')
+                // Single-character special symbols.
+            case '+':  case '-':  case '*':  case '/':  case ',':
+            case ';':  case '\'': case '=':  case '(':  case ')':
+            case '[':  case ']':  case '{':  case '}':  case '^':
             {
-                text += current_ch;
-                next_char();  // consume '='
+                next_char();  // consume character
+                break;
             }
-
-            break;
-        }
-
-        // < or <= or <>
-        case '<':
-        {
-            current_ch = next_char();  // consume '<';
-
-            if (current_ch == '=')
+                
+                // : or :=
+            case ':':
             {
-                text += current_ch;
-                next_char();  // consume '='
+                current_ch = next_char();  // consume ':';
+                
+                if (current_ch == '=')
+                {
+                    text += current_ch;
+                    next_char();  // consume '='
+                }
+                
+                break;
             }
-            else if (current_ch == '>')
+                
+                // < or <= or <>
+            case '<':
             {
-                text += current_ch;
-                next_char();  // consume '>'
+                current_ch = next_char();  // consume '<';
+                
+                if (current_ch == '=')
+                {
+                    text += current_ch;
+                    next_char();  // consume '='
+                }
+                else if (current_ch == '>')
+                {
+                    text += current_ch;
+                    next_char();  // consume '>'
+                }
+                
+                break;
             }
-
-            break;
-        }
-
-        // > or >=
-        case '>':
-        {
-            current_ch = next_char();  // consume '>';
-
-            if (current_ch == '=')
+                
+                // > or >=
+            case '>':
             {
-                text += current_ch;
-                next_char();  // consume '='
+                current_ch = next_char();  // consume '>';
+                
+                if (current_ch == '=')
+                {
+                    text += current_ch;
+                    next_char();  // consume '='
+                }
+                
+                break;
             }
-
-            break;
-        }
-
-        // . or ..
-        case '.':
-        {
-            current_ch = next_char();  // consume '.';
-
-            if (current_ch == '.')
+                
+                // . or ..
+            case '.':
             {
-                text += current_ch;
-                next_char();  // consume '.'
+                current_ch = next_char();  // consume '.';
+                
+                if (current_ch == '.')
+                {
+                    text += current_ch;
+                    next_char();  // consume '.'
+                }
+                
+                break;
             }
-
-            break;
+                
+            default:
+            {
+                next_char();  // consume bad character
+                type = (TokenType) (CppT_ERROR);
+                value = (int) INVALID_CHARACTER;
+                good_symbol = false;
+            }
         }
-
-        default:
-        {
-            next_char();  // consume bad character
-            type = (TokenType) (PT_ERROR);
-            value = (int) INVALID_CHARACTER;
-            good_symbol = false;
+        
+        // Set the type if it wasn't an error.
+        if (good_symbol) {
+            type = (TokenType) (CppToken::SPECIAL_SYMBOLS[text]);
         }
     }
-
-    // Set the type if it wasn't an error.
-    if (good_symbol) {
-        type = (TokenType) (PascalToken::SPECIAL_SYMBOLS[text]);
-    }
-}
-
-}}}}  // namespace wci::frontend::pascal::tokens
+    
+}}}}  // namespace wci::frontend::Cpp::tokens
