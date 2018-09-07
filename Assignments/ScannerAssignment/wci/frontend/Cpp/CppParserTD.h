@@ -6,8 +6,8 @@
  * <p>Copyright (c) 2017 by Ronald Mak</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-#ifndef WCI_FRONTEND_Cpp_CppPARSERTD_H_
-#define WCI_FRONTEND_Cpp_CppPARSERTD_H_
+#ifndef WCI_FRONTEND_CPP_CPPPARSERTD_H_
+#define WCI_FRONTEND_CPP_CPPPARSERTD_H_
 
 #include "../Parser.h"
 #include "../Scanner.h"
@@ -55,4 +55,4 @@ protected:
 }}} // namespace wci::frontend::Cpp
 
 
-#endif /* WCI_FRONTEND_Cpp_CppPARSERTD_H_ */
+#endif /* WCI_FRONTEND_CPP_CPPPARSERTD_H_ */
