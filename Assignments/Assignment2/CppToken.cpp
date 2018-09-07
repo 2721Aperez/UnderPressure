@@ -28,7 +28,7 @@ void PascalToken::initialize()
     vector<string> rw_strings =
     {
         "auto", "double", "int", "struct", "break", "else", "long", "switch",
-        "case", "enum", "namespace", "template", "char", "exterm", "operator", "this",
+        "case", "enum", "namespace", "template", "char", "extern", "operator", "this",
         "class", "float", "package", "throw", "const", "for", "public", "union",
         "continue", "goto", "return", "void", "do", "if", "static",
         "while"
