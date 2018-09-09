@@ -31,6 +31,7 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
         text += "'";
         
         // Get string characters.
+        //This needs to be able to catch double quotes ""
         do
         {
             // Replace any whitespace character with a blank.
