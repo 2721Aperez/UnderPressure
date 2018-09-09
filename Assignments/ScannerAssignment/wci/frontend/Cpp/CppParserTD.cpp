@@ -74,9 +74,9 @@ void CppParserTD::parse() throw (string)
                 break;
             }
 
-            case CppT_REAL:
+            case CppT_FLOAT:
             {
-                type_str = "REAL";
+                type_str = "FLOAT";
                 value_str = to_string(cast(value, float));
                 break;
             }

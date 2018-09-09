@@ -60,7 +60,7 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
             else
             {
                 // Decimal point, so token type is REAL.
-                type = (TokenType) CppT_REAL;
+                type = (TokenType) CppT_FLOAT;
                 text += current_ch;
                 current_ch = next_char();  // consume decimal point
                 
@@ -80,7 +80,7 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
         if (!saw_dot_dot && ((current_ch == 'E') || (current_ch == 'e')))
         {
             // Exponent, so token type is REAL.
-            type = (TokenType) CppT_REAL;
+            type = (TokenType) CppT_FLOAT;
             text += current_ch;
             current_ch = next_char();  // consume 'E' or 'e'
             
@@ -108,7 +108,7 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
         }
         
         // Compute the value of a real number token.
-        else if (type == (TokenType) CppT_REAL)
+        else if (type == (TokenType) CppT_FLOAT)
         {
             float float_value = compute_float_value(whole_digits,
                                                     fraction_digits,
