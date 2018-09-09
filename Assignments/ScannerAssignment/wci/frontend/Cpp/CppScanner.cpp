@@ -72,22 +72,25 @@ Token *CppScanner::extract_token() throw (string)
 void CppScanner::skip_white_space() throw (string)
 {
     char current_ch = current_char();
+    char next_ch = next_char();
 
-    while (isspace(current_ch) || (current_ch == '{')) {
-
+    while (isspace(current_ch) || (current_ch == '/' && next_ch == '/') ||
+             current_ch == '/' && next_ch == '*') 
+    {
         // Start of a comment?
-        if (current_ch == '{')
+        if ((current_ch == '/' && next_ch == '/') || (current_ch == '/' && next_ch == '*'))
         {
             do
             {
                 current_ch = next_char();  // consume comment characters
-            } while ((current_ch != '}') &&
+            } while ((current_ch != '*') ||
                      (current_ch != Source::END_OF_FILE));
 
             // Found closing '}'?
-            if (current_ch == '}')
+            if (current_ch == '*' && next_ch == '/')
             {
-                current_ch = next_char();  // consume the '}'
+                current_ch = next_char();  // consume the '*/'
+                next_ch = next_char();
             }
         }
 
