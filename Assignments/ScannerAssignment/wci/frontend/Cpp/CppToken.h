@@ -49,103 +49,103 @@ namespace wci { namespace frontend { namespace Cpp {
          END_OF_FILE
          };
          
-         constexpr CppTokenType CppT_AUTO = CppTokenType::AUTO;
-         constexpr CppTokenType CppT_BREAK = CppTokenType::BREAK;
-         constexpr CppTokenType CppT_CASE = CppTokenType::CASE;
-         constexpr CppTokenType CppT_CHAR = CppTokenType::CHAR;
-         constexpr CppTokenType CppT_CLASS = CppTokenType::CLASS;
-         constexpr CppTokenType CppT_CONST = CppTokenType::CONST;
-         constexpr CppTokenType CppT_CONTINUE = CppTokenType::CONTINUE;
-         constexpr CppTokenType CppT_DO = CppTokenType::DO;
-         
-         constexpr CppTokenType CppT_ELSE = CppTokenType::DOUBLE;
-         constexpr CppTokenType CppT_END = CppTokenType::ELSE;
-         constexpr CppTokenType CppT_FILE = CppTokenType::ENUM;
-         constexpr CppTokenType CppT_FOR = CppTokenType::EXTERN;
-         constexpr CppTokenType CppT_FUNCTION = CppTokenType::FLOAT;
-         constexpr CppTokenType CppT_GOTO = CppTokenType::FOR;
-         constexpr CppTokenType CppT_IF = CppTokenType::GOTO;
-         constexpr CppTokenType CppT_IN = CppTokenType::IF;
-         
-         constexpr CppTokenType CppT_LABEL = CppTokenType::INT;
-         constexpr CppTokenType CppT_MOD = CppTokenType::LONG;
-         constexpr CppTokenType CppT_NIL = CppTokenType::NAMESPACE;
-         constexpr CppTokenType CppT_NOT = CppTokenType::OPERATOR;
-         constexpr CppTokenType CppT_OF = CppTokenType::PROTECTED;
-         constexpr CppTokenType CppT_OR = CppTokenType::PUBLIC;
-         constexpr CppTokenType CppT_PACKED = CppTokenType::RETURN;
-         constexpr CppTokenType CppT_PROCEDURE = CppTokenType::STATIC;
-         
-         constexpr CppTokenType CppT_PROGRAM = CppTokenType::STRUCT;
-         constexpr CppTokenType CppT_RECORD = CppTokenType::SWITCH;
-         constexpr CppTokenType CppT_REPEAT = CppTokenType::TEMPLATE;
-         constexpr CppTokenType CppT_SET = CppTokenType::THIS;
-         constexpr CppTokenType CppT_THEN = CppTokenType::THROW;
-         constexpr CppTokenType CppT_TO = CppTokenType::UNION;
-         constexpr CppTokenType CppT_TYPE = CppTokenType::VOID;
-         
-         constexpr CppTokenType CppT_WHILE = CppTokenType::WHILE;
-         
-         constexpr CppTokenType CppT_PLUS = CppTokenType::TILDA;
-         constexpr CppTokenType CppT_MINUS = CppTokenType::EXCLAMATION;
-         constexpr CppTokenType CppT_STAR = CppTokenType::AT;
-         constexpr CppTokenType CppT_SLASH = CppTokenType::PERCENT;
-         constexpr CppTokenType CppT_COLON_EQUALS = CppTokenType::CARROT;
-         constexpr CppTokenType CppT_DOT = CppTokenType::AMPERSAND;
-         constexpr CppTokenType CppT_COMMA = CppTokenType::STAR;
-         constexpr CppTokenType CppT_SEMICOLON = CppTokenType::MINUS;
-         constexpr CppTokenType CppT_COLON = CppTokenType::PLUS;
-         constexpr CppTokenType CppT_QUOTE = CppTokenType::EQUALS;
-         constexpr CppTokenType CppT_EQUALS = CppTokenType::SLASH;
-         constexpr CppTokenType CppT_NOT_EQUALS = CppTokenType::COLON;
-         
-         constexpr CppTokenType CppT_LESS_THAN = CppTokenType::SEMICOLON;
-         constexpr CppTokenType CppT_LESS_EQUALS = CppTokenType::QUESTIONMARK;
-         constexpr CppTokenType CppT_GREATER_EQUALS = CppTokenType::LESS_THAN;
-         constexpr CppTokenType CppT_GREATER_THAN = CppTokenType::GREATER_THAN;
-         constexpr CppTokenType CppT_LEFT_PAREN = CppTokenType::DOT;
-         constexpr CppTokenType CppT_RIGHT_PAREN = CppTokenType::COMMA;
-         constexpr CppTokenType CppT_LEFT_BRACKET = CppTokenType::SINGLE_QUOTE;
-         constexpr CppTokenType CppT_RIGHT_BRACKET = CppTokenType::DOUBLE_QUOTE;
-         constexpr CppTokenType CppT_LEFT_BRACE = CppTokenType::LEFT_PAREN;
-         constexpr CppTokenType CppT_RIGHT_BRACE = CppTokenType::RIGHT_PAREN;
-         constexpr CppTokenType CppT_UP_ARROW = CppTokenType::LEFT_SQ_BRACKET;
-         constexpr CppTokenType CppT_DOT_DOT = CppTokenType::RIGHT_SQ_BRACKET;
-         
-         constexpr CppTokenType CppT_LESS_THAN = CppTokenType::LEFT_BRACKET;
-         constexpr CppTokenType CppT_LESS_EQUALS = CppTokenType::RIGHT_BRACKET;
-         constexpr CppTokenType CppT_GREATER_EQUALS = CppTokenType::PLUS_PLUS;
-         constexpr CppTokenType CppT_GREATER_THAN = CppTokenType::MINUS_MINUS;
-         constexpr CppTokenType CppT_LEFT_PAREN = CppTokenType::LEFT_SHIFT;
-         constexpr CppTokenType CppT_RIGHT_PAREN = CppTokenType::RIGHT_SHIFT;
-         constexpr CppTokenType CppT_LEFT_BRACKET = CppTokenType::LESS_THAN_EQUALS;
-         constexpr CppTokenType CppT_RIGHT_BRACKET = CppTokenType::GREATER_THAN_EQUALS;
-         constexpr CppTokenType CppT_LEFT_BRACE = CppTokenType::PLUS_EQUALS;
-         constexpr CppTokenType CppT_RIGHT_BRACE = CppTokenType::MINUS_EQUALS;
-         constexpr CppTokenType CppT_UP_ARROW = CppTokenType::STAR_EQUALS;
-         constexpr CppTokenType CppT_DOT_DOT = CppTokenType::SLASH_EQUALS;
-         
-         constexpr CppTokenType CppT_LESS_THAN = CppTokenType::EQUALS_EQUALS;
-         constexpr CppTokenType CppT_LESS_EQUALS = CppTokenType::OR_EQUALS;
-         constexpr CppTokenType CppT_GREATER_EQUALS = CppTokenType::PERCENT_EQUALS;
-         constexpr CppTokenType CppT_GREATER_THAN = CppTokenType::AND_EQUALS;
-         constexpr CppTokenType CppT_LEFT_PAREN = CppTokenType::CARROT_EQUALS;
-         constexpr CppTokenType CppT_RIGHT_PAREN = CppTokenType::EXCLAMATION_EQUALS;
-         constexpr CppTokenType CppT_LEFT_BRACKET = CppTokenType::LEFT_SHIFT_EQUALS;
-         constexpr CppTokenType CppT_RIGHT_BRACKET = CppTokenType::RIGHT_SHIFT_EQUALS;
-         constexpr CppTokenType CppT_LEFT_BRACE = CppTokenType::OR_OR;
-         constexpr CppTokenType CppT_RIGHT_BRACE = CppTokenType::AND_AND;
-         constexpr CppTokenType CppT_UP_ARROW = CppTokenType::SLASH_SLASH;
-         constexpr CppTokenType CppT_DOT_DOT = CppTokenType::SLASH_STAR;
-         
-         constexpr CppTokenType CppT_DOT_DOT = CppTokenType::STAR_SLASH;
-         constexpr CppTokenType CppT_IDENTIFIER = CppTokenType:: IDENTIFIER;
-         constexpr CppTokenType CppT_INTEGER = CppTokenType::INTEGER;
-         constexpr CppTokenType CppT_STRING = CppTokenType::STRING;
-         
-         constexpr CppTokenType CppT_REAL = CppTokenType::REAL;
-         constexpr CppTokenType CppT_ERROR = CppTokenType::ERROR;
-         constexpr CppTokenType CppT_END_OF_FILE = CppTokenType::END_OF_FILE;
+     constexpr CppTokenType CppT_AUTO = CppTokenType::AUTO;
+    constexpr CppTokenType CppT_BREAK = CppTokenType::BREAK;
+    constexpr CppTokenType CppT_CASE = CppTokenType::CASE;
+    constexpr CppTokenType CppT_CHAR = CppTokenType::CHAR;
+    constexpr CppTokenType CppT_CLASS = CppTokenType::CLASS;
+    constexpr CppTokenType CppT_CONST = CppTokenType::CONST;
+    constexpr CppTokenType CppT_CONTINUE = CppTokenType::CONTINUE;
+    constexpr CppTokenType CppT_DO = CppTokenType::DO;
+    
+    constexpr CppTokenType CppT_DOUBLE = CppTokenType::DOUBLE;
+    constexpr CppTokenType CppT_ELSE = CppTokenType::ELSE;
+    constexpr CppTokenType CppT_ENUM = CppTokenType::ENUM;
+    constexpr CppTokenType CppT_EXTERN = CppTokenType::EXTERN;
+    constexpr CppTokenType CppT_FLOAT = CppTokenType::FLOAT;
+    constexpr CppTokenType CppT_FOR = CppTokenType::FOR;
+    constexpr CppTokenType CppT_GOTO = CppTokenType::GOTO;
+    constexpr CppTokenType CppT_IF = CppTokenType::IF;
+    
+    constexpr CppTokenType CppT_INT = CppTokenType::INT;
+    constexpr CppTokenType CppT_LONG = CppTokenType::LONG;
+    constexpr CppTokenType CppT_NAMESPACE = CppTokenType::NAMESPACE;
+    constexpr CppTokenType CppT_OPERATOR = CppTokenType::OPERATOR;
+    constexpr CppTokenType CppT_PROTECTED = CppTokenType::PROTECTED;
+    constexpr CppTokenType CppT_PUBLIC = CppTokenType::PUBLIC;
+    constexpr CppTokenType CppT_RETURN = CppTokenType::RETURN;
+    constexpr CppTokenType CppT_STATIC = CppTokenType::STATIC;
+    
+    constexpr CppTokenType CppT_STRUCT = CppTokenType::STRUCT;
+    constexpr CppTokenType CppT_SWITCH = CppTokenType::SWITCH;
+    constexpr CppTokenType CppT_TEMPLATE = CppTokenType::TEMPLATE;
+    constexpr CppTokenType CppT_THIS = CppTokenType::THIS;
+    constexpr CppTokenType CppT_THROW = CppTokenType::THROW;
+    constexpr CppTokenType CppT_UNION = CppTokenType::UNION;
+    constexpr CppTokenType CppT_VOID = CppTokenType::VOID;
+    
+    constexpr CppTokenType CppT_WHILE = CppTokenType::WHILE;
+    
+    constexpr CppTokenType CppT_TILDA = CppTokenType::TILDA;
+    constexpr CppTokenType CppT_EXCLAMATION = CppTokenType::EXCLAMATION;
+    constexpr CppTokenType CppT_AT = CppTokenType::AT;
+    constexpr CppTokenType CppT_PERCENT = CppTokenType::PERCENT;
+    constexpr CppTokenType CppT_CARROT = CppTokenType::CARROT;
+    constexpr CppTokenType CppT_AMPERSAND = CppTokenType::AMPERSAND;
+    constexpr CppTokenType CppT_STAR = CppTokenType::STAR;
+    constexpr CppTokenType CppT_MINUS = CppTokenType::MINUS;
+    constexpr CppTokenType CppT_PLUS = CppTokenType::PLUS;
+    constexpr CppTokenType CppT_EQUALS = CppTokenType::EQUALS;
+    constexpr CppTokenType CppT_SLASH = CppTokenType::SLASH;
+    constexpr CppTokenType CppT_COLON = CppTokenType::COLON;
+    
+    constexpr CppTokenType CppT_SEMICOLON = CppTokenType::SEMICOLON;
+    constexpr CppTokenType CppT_QUESTIONMARK = CppTokenType::QUESTIONMARK;
+    constexpr CppTokenType CppT_LESS_THAN = CppTokenType::LESS_THAN;
+    constexpr CppTokenType CppT_GREATER_THAN = CppTokenType::GREATER_THAN;
+    constexpr CppTokenType CppT_DOT = CppTokenType::DOT;
+    constexpr CppTokenType CppT_COMMA = CppTokenType::COMMA;
+    constexpr CppTokenType CppT_SINGLE_QUOTE = CppTokenType::SINGLE_QUOTE;
+    constexpr CppTokenType CppT_DOUBLE_QUOTE = CppTokenType::DOUBLE_QUOTE;
+    constexpr CppTokenType CppT_LEFT_PAREN = CppTokenType::LEFT_PAREN;
+    constexpr CppTokenType CppT_RIGHT_PAREN = CppTokenType::RIGHT_PAREN;
+    constexpr CppTokenType CppT_LEFT_SQ_BRACKET = CppTokenType::LEFT_SQ_BRACKET;
+    constexpr CppTokenType CppT_RIGHT_SQ_BRACKET = CppTokenType::RIGHT_SQ_BRACKET;
+    
+    constexpr CppTokenType CppT_LEFT_BRACKET = CppTokenType::LEFT_BRACKET;
+    constexpr CppTokenType CppT_RIGHT_BRACKET = CppTokenType::RIGHT_BRACKET;
+    constexpr CppTokenType CppT_PLUS_PLUS = CppTokenType::PLUS_PLUS;
+    constexpr CppTokenType CppT_MINUS_MINUS = CppTokenType::MINUS_MINUS;
+    constexpr CppTokenType CppT_LEFT_SHIFT = CppTokenType::LEFT_SHIFT;
+    constexpr CppTokenType CppT_RIGHT_SHIFT = CppTokenType::RIGHT_SHIFT;
+    constexpr CppTokenType CppT_LESS_THAN_EQUALS = CppTokenType::LESS_THAN_EQUALS;
+    constexpr CppTokenType CppT_GREATER_THAN_EQUALS = CppTokenType::GREATER_THAN_EQUALS;
+    constexpr CppTokenType CppT_PLUS_EQUALS = CppTokenType::PLUS_EQUALS;
+    constexpr CppTokenType CppT_MINUS_EQUALS = CppTokenType::MINUS_EQUALS;
+    constexpr CppTokenType CppT_STAR_EQUALS = CppTokenType::STAR_EQUALS;
+    constexpr CppTokenType CppT_SLASH_EQUALS = CppTokenType::SLASH_EQUALS;
+    
+    constexpr CppTokenType CppT_EQUALS_EQUALS = CppTokenType::EQUALS_EQUALS;
+    constexpr CppTokenType CppT_OR_EQUALS = CppTokenType::OR_EQUALS;
+    constexpr CppTokenType CppT_PERCENT_EQUALS = CppTokenType::PERCENT_EQUALS;
+    constexpr CppTokenType CppT_AND_EQUALS = CppTokenType::AND_EQUALS;
+    constexpr CppTokenType CppT_CARROT_EQUALS = CppTokenType::CARROT_EQUALS;
+    constexpr CppTokenType CppT_EXCLAMATION_EQUALS = CppTokenType::EXCLAMATION_EQUALS;
+    constexpr CppTokenType CppT_LEFT_SHIFT_EQUALS = CppTokenType::LEFT_SHIFT_EQUALS;
+    constexpr CppTokenType CppT_RIGHT_SHIFT_EQUALS = CppTokenType::RIGHT_SHIFT_EQUALS;
+    constexpr CppTokenType CppT_OR_OR = CppTokenType::OR_OR;
+    constexpr CppTokenType CppT_AND_AND = CppTokenType::AND_AND;
+    constexpr CppTokenType CppT_SLASH_SLASH = CppTokenType::SLASH_SLASH;
+    constexpr CppTokenType CppT_SLASH_STAR = CppTokenType::SLASH_STAR;
+    
+    constexpr CppTokenType CppT_STAR_SLASH = CppTokenType::STAR_SLASH;
+    
+    constexpr CppTokenType CppT_IDENTIFIER = CppTokenType::IDENTIFIER;
+    constexpr CppTokenType CppT_INTEGER = CppTokenType::INTEGER;
+    constexpr CppTokenType CppT_STRING = CppTokenType::STRING;
+    constexpr CppTokenType CppT_REAL = CppTokenType::REAL;
+    constexpr CppTokenType CppT_ERROR = CppTokenType::ERROR;
+    constexpr CppTokenType CppT_END_OF_FILE = CppTokenType::END_OF_FILE;
         
         // // Reserved words.
         // AND, ARRAY, BEGIN, CASE, CONST, DIV, DO, DOWNTO, ELSE, END,
