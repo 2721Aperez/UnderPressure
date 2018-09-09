@@ -147,3 +147,4 @@ CppToken::CppToken(Source *source) throw (string)
 }
 
 }}}  // namespace wci::frontend::Cpp
+ 
