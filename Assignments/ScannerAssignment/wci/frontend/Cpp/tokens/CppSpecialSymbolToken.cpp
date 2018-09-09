@@ -217,6 +217,24 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
                 
                 break;
             }
+                // for \n or \t
+            case '\\':
+            {
+                current_ch = next_char(); // Consumes the \ 
+
+                if(current_ch == 'n')
+                {
+                    text += current_ch;
+                    next_char(); //Consumes the n
+                }
+                else if(current_ch == 't')
+                {
+                    text += current_ch;
+                    next_char(); // Consumes the t
+                }
+
+                break;
+            }
                 
                 // < or <= or << or <<=
             case '<':
