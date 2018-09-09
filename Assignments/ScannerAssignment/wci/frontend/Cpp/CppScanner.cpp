@@ -83,7 +83,8 @@ void CppScanner::skip_white_space() throw (string)
             do
             {
                 current_ch = next_char();  // consume comment characters
-            } while ((current_ch != '*') ||
+                next_ch = next_char();
+            } while ((current_ch != '*' && (next_ch != '/')) ||
                      (current_ch != Source::END_OF_FILE));
 
             // Found closing '}'?
