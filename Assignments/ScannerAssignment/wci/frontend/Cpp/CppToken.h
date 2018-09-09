@@ -44,6 +44,9 @@ namespace wci { namespace frontend { namespace Cpp {
          CARROT_EQUALS, EXCLAMATION_EQUALS, LEFT_SHIFT_EQUALS,
          RIGHT_SHIFT_EQUALS, OR_OR, AND_AND, SLASH_SLASH,
          SLASH_STAR, STAR_SLASH,
+
+         INDENTIFIER, STRING, INTEGER, REAL, ERROR, 
+         END_OF_FILE
          };
          
          constexpr CppTokenType CppT_AUTO = CppTokenType::AUTO;
@@ -136,6 +139,13 @@ namespace wci { namespace frontend { namespace Cpp {
          constexpr CppTokenType CppT_DOT_DOT = CppTokenType::SLASH_STAR;
          
          constexpr CppTokenType CppT_DOT_DOT = CppTokenType::STAR_SLASH;
+         constexpr CppTokenType CppT_IDENTIFIER = CppTokenType:: IDENTIFIER;
+         constexpr CppTokenType CppT_INTEGER = CppTokenType::INTEGER;
+         constexpr CppTokenType CppT_STRING = CppTokenType::STRING;
+         
+         constexpr CppTokenType CppT_REAL = CppTokenType::REAL;
+         constexpr CppTokenType CppT_ERROR = CppTokenType::ERROR;
+         constexpr CppTokenType CppT_END_OF_FILE = CppTokenType::END_OF_FILE;
         
         // // Reserved words.
         // AND, ARRAY, BEGIN, CASE, CONST, DIV, DO, DOWNTO, ELSE, END,
