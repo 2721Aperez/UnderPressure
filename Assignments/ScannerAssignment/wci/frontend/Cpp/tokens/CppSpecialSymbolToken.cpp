@@ -6,10 +6,11 @@
  * <p>Copyright (c) 2017 by Ronald Mak & Under Pressure</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-#include "CppSpecialSymbolToken.h"
+#include "../../Cpp/tokens/CppSpecialSymbolToken.h"
 
 #include <string>
-#include "../CppError.h"
+
+#include "../../Cpp/CppError.h"
 
 namespace wci { namespace frontend { namespace Cpp { namespace tokens {
     
@@ -33,18 +34,19 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
         switch (current_ch)
         {
                 // Single-character special symbols.
-            case '+':  case '-':  case '*':  case '/':  case ',':
-            case ';':  case '\'': case '=':  case '(':  case ')':
-            case '[':  case ']':  case '{':  case '}':  case '^':
+            case '~':  case '@':  case ':':  case ';':  case '?':
+            case '.':  case ',':  case '\'': case '"':  case '(':
+            case ')':  case '[':  case ']':  case '{':  case '}':
+                
             {
                 next_char();  // consume character
                 break;
             }
                 
-                // : or :=
-            case ':':
+                // ! or !=
+            case '!':
             {
-                current_ch = next_char();  // consume ':';
+                current_ch = next_char();  // consume '!';
                 
                 if (current_ch == '=')
                 {
@@ -55,10 +57,190 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
                 break;
             }
                 
-                // < or <= or <>
+                // % or %=
+            case '%':
+            {
+                current_ch = next_char();  // consume '%';
+                
+                if (current_ch == '=')
+                {
+                    text += current_ch;
+                    next_char();  // consume '='
+                }
+                
+                break;
+            }
+                
+                // = or ==
+            case '=':
+            {
+                current_ch = next_char();  // consume '=';
+                
+                if (current_ch == '=')
+                {
+                    text += current_ch;
+                    next_char();  // consume '='
+                }
+                
+                break;
+            }
+                
+                // ^ or ^=
+            case '^':
+            {
+                current_ch = next_char();  // consume '^';
+                
+                if (current_ch == '=')
+                {
+                    text += current_ch;
+                    next_char();  // consume '='
+                }
+                
+                break;
+            }
+                
+                // & or &= or &&
+            case '&':
+            {
+                current_ch = next_char();  // consume '&';
+                
+                if (current_ch == '=')
+                {
+                    text += current_ch;
+                    next_char();  // consume '='
+                }
+                else if (current_ch == '&')
+                {
+                    text += current_ch;
+                    next_char();  // consume '&'
+                }
+                
+                break;
+            }
+                
+                // * or *= or */
+            case '*':
+            {
+                current_ch = next_char();  // consume '*';
+                
+                if (current_ch == '=')
+                {
+                    text += current_ch;
+                    next_char();  // consume '='
+                }
+                else if (current_ch == '/')
+                {
+                    text += current_ch;
+                    next_char();  // consume '/'
+                }
+                
+                break;
+            }
+                
+                // - or -= or --
+            case '-':
+            {
+                current_ch = next_char();  // consume '-';
+                
+                if (current_ch == '=')
+                {
+                    text += current_ch;
+                    next_char();  // consume '='
+                }
+                else if (current_ch == '-')
+                {
+                    text += current_ch;
+                    next_char();  // consume '-'
+                }
+                
+                break;
+            }
+                
+                // + or += or ++
+            case '+':
+            {
+                current_ch = next_char();  // consume '+';
+                
+                if (current_ch == '=')
+                {
+                    text += current_ch;
+                    next_char();  // consume '='
+                }
+                else if (current_ch == '+')
+                {
+                    text += current_ch;
+                    next_char();  // consume '+'
+                }
+                
+                break;
+            }
+                
+                // | or |= or ||
+            case '|':
+            {
+                current_ch = next_char();  // consume '|';
+                
+                if (current_ch == '=')
+                {
+                    text += current_ch;
+                    next_char();  // consume '='
+                }
+                else if (current_ch == '|')
+                {
+                    text += current_ch;
+                    next_char();  // consume '|'
+                }
+                
+                break;
+            }
+                
+                // / or /= or // or /*
+            case '/':
+            {
+                current_ch = next_char();  // consume '/';
+                
+                if (current_ch == '=')
+                {
+                    text += current_ch;
+                    next_char();  // consume '='
+                }
+                else if (current_ch == '/')
+                {
+                    text += current_ch;
+                    next_char();  // consume '/'
+                }
+                else if (current_ch == '*')
+                {
+                    text += current_ch;
+                    next_char();  // consume '*'
+                }
+                
+                break;
+            }
+                
+                // < or <= or << or <<=
             case '<':
             {
                 current_ch = next_char();  // consume '<';
+                
+                if (current_ch == '=')
+                {
+                    text += current_ch;
+                    next_char();  // consume '='
+                }
+                else if (current_ch == '<')
+                {
+                    text += current_ch;
+                    next_char();  // consume '<'
+                }
+                
+                break;
+            }
+                
+                // > or >= or >> or >>=
+            case '>':
+            {
+                current_ch = next_char();  // consume '>';
                 
                 if (current_ch == '=')
                 {
@@ -69,34 +251,6 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
                 {
                     text += current_ch;
                     next_char();  // consume '>'
-                }
-                
-                break;
-            }
-                
-                // > or >=
-            case '>':
-            {
-                current_ch = next_char();  // consume '>';
-                
-                if (current_ch == '=')
-                {
-                    text += current_ch;
-                    next_char();  // consume '='
-                }
-                
-                break;
-            }
-                
-                // . or ..
-            case '.':
-            {
-                current_ch = next_char();  // consume '.';
-                
-                if (current_ch == '.')
-                {
-                    text += current_ch;
-                    next_char();  // consume '.'
                 }
                 
                 break;
@@ -118,3 +272,4 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
     }
     
 }}}}  // namespace wci::frontend::Cpp::tokens
+
