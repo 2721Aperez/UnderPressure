@@ -87,7 +87,7 @@ void CppScanner::skip_white_space() throw (string)
             } while ((current_ch != '*' && (next_ch != '/')) ||
                      (current_ch != Source::END_OF_FILE));
 
-            // Found closing '}'?
+            // Found closing '*/'?
             if (current_ch == '*' && next_ch == '/')
             {
                 current_ch = next_char();  // consume the '*/'
