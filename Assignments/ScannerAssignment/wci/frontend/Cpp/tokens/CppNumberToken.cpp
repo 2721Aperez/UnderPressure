@@ -75,6 +75,7 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
         
         // Is there an exponent part?
         // There cannot be an exponent if we already saw a ".." token.
+        //This needs to be changed for C++ syntax
         current_ch = current_char();
         if (!saw_dot_dot && ((current_ch == 'E') || (current_ch == 'e')))
         {
