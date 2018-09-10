@@ -37,7 +37,7 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
             // Replace any whitespace character with a blank.
             if (isspace(current_ch)) current_ch = ' ';
             
-            if ((current_ch != '\'' || current_ch != '\"') && (current_ch != EOF))
+            if ((current_ch != '\'' && current_ch != '\"') && (current_ch != EOF))
             {
                 text += current_ch;
                 value_str  += current_ch;
