@@ -75,7 +75,7 @@ void CppScanner::skip_white_space() throw (string)
     char next_ch = next_char();
 
     while (isspace(current_ch) || (current_ch == '/' && next_ch == '/') ||
-             current_ch == '/' && next_ch == '*') 
+             (current_ch == '/' && next_ch == '*')) 
     {
         // Start of a comment?
         if ((current_ch == '/' && next_ch == '/') || (current_ch == '/' && next_ch == '*'))
