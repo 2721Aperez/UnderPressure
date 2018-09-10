@@ -163,7 +163,7 @@ namespace wci { namespace frontend { namespace Cpp {
     
     // IDENTIFIER, INTEGER, REAL, STRING,
     // ERROR, END_OF_FILE,
-};
+
     
     // constexpr CppTokenType CppT_AND = CppTokenType::AND;
     // constexpr CppTokenType CppT_ARRAY = CppTokenType::ARRAY;
