@@ -72,32 +72,66 @@ Token *CppScanner::extract_token() throw (string)
 void CppScanner::skip_white_space() throw (string)
 {
     char current_ch = current_char();
-    char next_ch = next_char();
 
-    while (isspace(current_ch) || (current_ch == '/' && next_ch == '/') ||
-             (current_ch == '/' && next_ch == '*')) 
+    while (isspace(current_ch) || (current_ch == '/'))
     {
-        // Start of a comment?
-        if ((current_ch == '/' && next_ch == '/') || (current_ch == '/' && next_ch == '*'))
-        {
-            do
-            {
-                current_ch = next_char();  // consume comment characters
-                next_ch = next_char();
-            } while ((current_ch != '*' && (next_ch != '/')) ||
-                     (current_ch != Source::END_OF_FILE));
+    	if(current_ch == '/')
+    	{
+    		char next_ch = next_char();
 
-            // Found closing '*/'?
-            if (current_ch == '*' && next_ch == '/')
-            {
-                current_ch = next_char();  // consume the '*/'
-                next_ch = next_char();
-            }
-        }
-
-        // Not a comment.
-        else current_ch = next_char();  // consume whitespace character
+    		if(next_ch == '/')
+    		{
+    			do
+    			{
+    				current_ch = next_char();
+    			}while(current_ch != Source::END_OF_FILE && current_ch != Source::END_OF_LINE);
+    		}
+    		else if(next_ch == '*')
+    		{
+    			next_ch = 'a';
+    			do
+    			{
+    				if(next_ch != '*'){current_ch = next_char();}
+    				if(current_ch == '*')
+    				{
+    					next_ch = next_char();
+    					if(next_ch == '/'){break;}
+    					else {current_ch = next_ch;}
+    				}
+    			}while(current_ch != Source::END_OF_FILE);
+    		}
+    	}
+    	else current_ch = next_char();
     }
 }
+
+//    	char next_ch = next_char();
+//        // Start of a comment?
+//        if ((next_ch == '/') || (next_ch == '*'))
+//        {
+//            do
+//            {
+//                current_ch = next_char();  // consume comment characters
+//
+//                if(current_ch == '*')
+//                {
+//                	next_ch = next_char();
+//                }
+//
+//            } while ((current_ch != '*' && (next_ch != '/')) ||
+//                     (current_ch != Source::END_OF_FILE));
+
+            // Found closing '*/'?
+//            if (current_ch == '*' && next_ch == '/')
+//            {
+//                current_ch = next_char();  // consume the '*/'
+//            }
+
+
+        // Not a comment.
+//        else current_ch = next_char();  // consume whitespace character
+
+
+
 
 }}} // namespace wci::frontend::Cpp
