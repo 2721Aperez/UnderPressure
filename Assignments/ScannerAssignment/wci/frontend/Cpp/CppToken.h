@@ -99,7 +99,7 @@ namespace wci { namespace frontend { namespace Cpp {
     constexpr CppTokenType CppT_MINUS = CppTokenType::MINUS;
     constexpr CppTokenType CppT_PLUS = CppTokenType::PLUS;
     constexpr CppTokenType CppT_EQUALS = CppTokenType::EQUALS;
-    constexpr CppTokenType CppT_EQUALS = CppTokenType::BITWISEOR;
+    constexpr CppTokenType CppT_BITWISEOR = CppTokenType::BITWISEOR;
     constexpr CppTokenType CppT_SLASH = CppTokenType::SLASH;
     
     constexpr CppTokenType CppT_COLON = CppTokenType::COLON;
