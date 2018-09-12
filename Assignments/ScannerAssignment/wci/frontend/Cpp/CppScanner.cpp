@@ -100,7 +100,12 @@ void CppScanner::skip_white_space() throw (string)
     				}
     			}while(current_ch != Source::END_OF_FILE);
     		}
+    		else
+    		{
+    			current_ch = next_char();
+    		}
     	}
+
     	else current_ch = next_char();
     }
 }
