@@ -25,6 +25,8 @@ using namespace wci::frontend::Cpp::tokens;
 
 CppScanner::CppScanner(Source *source) : Scanner(source)
 {
+	Token *token;
+	token = new CppWordToken(source);
 }
 
 Token *CppScanner::extract_token() throw (string)
@@ -36,6 +38,7 @@ Token *CppScanner::extract_token() throw (string)
     string string_ch = " ";
 
     string_ch[0] = current_ch;
+
 
     // Construct the next token.  The current character determines the
     // token type.
@@ -51,7 +54,7 @@ Token *CppScanner::extract_token() throw (string)
     {
         token = new CppNumberToken(source);
     }
-    else if (current_ch == '\'')
+    else if (current_ch == '\"')
     {
         token = new CppStringToken(source);
     }
@@ -73,40 +76,40 @@ void CppScanner::skip_white_space() throw (string)
 {
     char current_ch = current_char();
 
-    while (isspace(current_ch) || (current_ch == '/'))
+    while (isspace(current_ch))
     {
-    	if(current_ch == '/')
-    	{
-    		char next_ch = next_char();
+//    	if(current_ch == '/')
+//    	{
+//    		char next_ch = next_char();
+//
+//    		if(next_ch == '/')
+//    		{
+//    			do
+//    			{
+//    				current_ch = next_char();
+//    			}while(current_ch != Source::END_OF_FILE && current_ch != Source::END_OF_LINE);
+//    		}
+//    		else if(next_ch == '*')
+//    		{
+//    			next_ch = 'a';
+//    			do
+//    			{
+//    				if(next_ch != '*'){current_ch = next_char();}
+//    				if(current_ch == '*')
+//    				{
+//    					next_ch = next_char();
+//    					if(next_ch == '/'){break;}
+//    					else {current_ch = next_ch;}
+//    				}
+//    			}while(current_ch != Source::END_OF_FILE);
+//    		}
+//    		else
+//    		{
+//    			current_ch = next_char();
+//    		}
+//    	}
 
-    		if(next_ch == '/')
-    		{
-    			do
-    			{
-    				current_ch = next_char();
-    			}while(current_ch != Source::END_OF_FILE && current_ch != Source::END_OF_LINE);
-    		}
-    		else if(next_ch == '*')
-    		{
-    			next_ch = 'a';
-    			do
-    			{
-    				if(next_ch != '*'){current_ch = next_char();}
-    				if(current_ch == '*')
-    				{
-    					next_ch = next_char();
-    					if(next_ch == '/'){break;}
-    					else {current_ch = next_ch;}
-    				}
-    			}while(current_ch != Source::END_OF_FILE);
-    		}
-    		else
-    		{
-    			current_ch = next_char();
-    		}
-    	}
-
-    	else current_ch = next_char();
+    	current_ch = next_char();
     }
 }
 
