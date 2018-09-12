@@ -6,10 +6,11 @@
  * <p>Copyright (c) 2017 by Ronald Mak & Under Pressure</p>
  * <p>For instructional purposes only.  No warranties.</p>
  */
-#include "CppStringToken.h"
+#include "../../Cpp/tokens/CppStringToken.h"
 
 #include <string>
-#include "../CppError.h"
+
+#include "../../Cpp/CppError.h"
 
 namespace wci { namespace frontend { namespace Cpp { namespace tokens {
     
@@ -28,39 +29,48 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
         string value_str = "";
         
         char current_ch = next_char();  // consume initial quote
-        text += "'";
+        text += '"';
         
         // Get string characters.
-        //This needs to be able to catch double quotes ""
         do
         {
             // Replace any whitespace character with a blank.
             if (isspace(current_ch)) current_ch = ' ';
             
-            if ((current_ch != '\'' && current_ch != '\"') && (current_ch != EOF))
+            if ((current_ch != '"') && (current_ch != EOF) && (current_ch != '\\'))
             {
                 text += current_ch;
                 value_str  += current_ch;
                 current_ch = next_char();  // consume character
             }
             
-            // Quote?  Each pair of adjacent quotes represents a single-quote.
-            if (current_ch == '\'' || current_ch == ' \" ')
+            // Check for \n and \t and \\
+            if (current_ch == '\\')
             {
-                while ((current_ch == '\'' || current_ch == '\"') && (peek_char() == '\'' || peek_char() == '\"'))
+                current_ch = next_char(); //consume \
+                
+                if(current_ch == 'n')
                 {
-                    text += "''";
-                    value_str  += current_ch;  // append single-quote
-                    current_ch = next_char();  // consume pair of quotes
-                    current_ch = next_char();
+                    text += 'n';
+                    next_char();
+                }
+                else if (current_ch == 't')
+                {
+                    text += 't';
+                    next_char();
+                }
+                else if (current_ch == '\\')
+                {
+                    text += '\\';
+                    next_char();
                 }
             }
-        } while ((current_ch != '\'' && current_ch != '\"') && (current_ch != Source::END_OF_FILE));
+        } while ((current_ch != '"') && (current_ch != Source::END_OF_FILE));
         
-        if (current_ch == '\'' || current_ch == '\"')
+        if (current_ch == '"')
         {
             next_char();  // consume final quote
-            text += '\'';
+            text += '"';
             type = (TokenType) CppT_STRING;
             value = value_str;
         }
