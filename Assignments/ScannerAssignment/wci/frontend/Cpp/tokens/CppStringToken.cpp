@@ -44,24 +44,24 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
                 current_ch = next_char();  // consume character
             }
             
-            // Check for \n and \t and \\
+            // Check for \n and \t and '\\'
             if (current_ch == '\\')
             {
                 current_ch = next_char(); //consume \
                 
                 if(current_ch == 'n')
                 {
-                    text += 'n';
+                    text += "\n";
                     next_char();
                 }
                 else if (current_ch == 't')
                 {
-                    text += 't';
+                    text += "\t";
                     next_char();
                 }
                 else if (current_ch == '\\')
                 {
-                    text += '\\';
+                    text += "\\";
                     next_char();
                 }
             }
