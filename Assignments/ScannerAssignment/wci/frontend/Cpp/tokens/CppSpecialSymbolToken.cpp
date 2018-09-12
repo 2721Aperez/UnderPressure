@@ -217,24 +217,25 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
                 
                 break;
             }
+                
                 // for \n or \t
-            case '\\':
-            {
-                current_ch = next_char(); // Consumes the \ 
-
-                if(current_ch == 'n')
-                {
-                    text += current_ch;
-                    next_char(); //Consumes the n
-                }
-                else if(current_ch == 't')
-                {
-                    text += current_ch;
-                    next_char(); // Consumes the t
-                }
-
-                break;
-            }
+                //            case '\\':
+                //            {
+                //                current_ch = next_char(); // Consumes the \
+                //
+                //                if(current_ch == 'n')
+                //                {
+                //                    text += current_ch;
+                //                    next_char(); //Consumes the n
+                //                }
+                //                else if(current_ch == 't')
+                //                {
+                //                    text += current_ch;
+                //                    next_char(); // Consumes the t
+                //                }
+                //
+                //                break;
+                //            }
                 
                 // < or <= or << or <<=
             case '<':
@@ -249,7 +250,13 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
                 else if (current_ch == '<')
                 {
                     text += current_ch;
-                    next_char();  // consume '<'
+                    current_ch = next_char();  // consume '<'
+                    
+                    if (current_ch == '=')
+                    {
+                        text += current_ch;
+                        next_char();     // consume '='
+                    }
                 }
                 
                 break;
@@ -268,7 +275,13 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
                 else if (current_ch == '>')
                 {
                     text += current_ch;
-                    next_char();  // consume '>'
+                    current_ch = next_char();  // consume '>'
+                    
+                    if (current_ch == '=')
+                    {
+                        text += current_ch;
+                        next_char();     // consume '='
+                    }
                 }
                 
                 break;
