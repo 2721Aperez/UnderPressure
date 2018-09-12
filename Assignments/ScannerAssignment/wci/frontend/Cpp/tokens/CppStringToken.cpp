@@ -51,18 +51,15 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
                 
                 if(current_ch == 'n')
                 {
-                    text += "\n";
-                    next_char();
+                    current_ch = next_char();
                 }
                 else if (current_ch == 't')
                 {
-                    text += "\t";
-                    next_char();
+                    current_ch = next_char();
                 }
                 else if (current_ch == '\\')
                 {
-                    text += "\\";
-                    next_char();
+                    current_ch = next_char();
                 }
             }
         } while ((current_ch != '"') && (current_ch != Source::END_OF_FILE));
