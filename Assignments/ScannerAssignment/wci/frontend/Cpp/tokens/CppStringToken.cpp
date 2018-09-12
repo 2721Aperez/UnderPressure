@@ -47,18 +47,22 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
             // Check for \n and \t and '\\'
             if (current_ch == '\\')
             {
+                text += current_ch;
                 current_ch = next_char(); //consume \
                 
                 if(current_ch == 'n')
                 {
+                    text += current_ch;
                     current_ch = next_char();
                 }
                 else if (current_ch == 't')
                 {
+                    text += current_ch;
                     current_ch = next_char();
                 }
                 else if (current_ch == '\\')
                 {
+                    text += current_ch;
                     current_ch = next_char();
                 }
             }
