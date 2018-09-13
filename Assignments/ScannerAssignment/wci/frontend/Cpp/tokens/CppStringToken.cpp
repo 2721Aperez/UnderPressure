@@ -57,6 +57,7 @@ namespace wci { namespace frontend { namespace Cpp { namespace tokens {
                 }
                 else if (current_ch == 't')
                 {
+                    
                     text += current_ch;
                     current_ch = next_char();
                 }
