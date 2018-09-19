@@ -28,6 +28,9 @@ using namespace wci::frontend::pascal;
 using namespace wci::intermediate;
 using namespace wci::intermediate::icodeimpl;
 
+bool WhenStatementParser::INITIALIZED = false;
+
+set<PascalTokenType> WhenStatementParser::ARROW_SET;
 
 
 

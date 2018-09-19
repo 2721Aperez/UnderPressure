@@ -23,14 +23,18 @@ using namespace wci::intermediate;
 class WhenStatementParser : public StatementParser
 {
 public:
+	WhenStatementParser(PascalParserTD *parent);
 
 
 
+    ICodeNode *parse_statement(Token *token) throw (string);
 
 private:
+    static set<PascalTokenType> ARROW_SET;
 
+    static bool INITIALIZED;
 
-
+    static bool initialize();
 };
 
 
