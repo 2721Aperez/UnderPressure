@@ -55,5 +55,11 @@ namespace wci { namespace frontend { namespace pascal { namespace parsers {
     {
         initialize();
     }
+
+    ICodeNode *WhenStatementParser::parse_statement(Token *token) throw(string)
+	{
+    	token = next_token(token); //Consume When
+
+	}
     
 }}}}
