@@ -34,7 +34,7 @@ private:
 
     static bool INITIALIZED;
 
-    static bool initialize();
+    static void initialize();
 };
 
 
