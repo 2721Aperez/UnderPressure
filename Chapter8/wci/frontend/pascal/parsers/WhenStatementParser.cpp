@@ -22,17 +22,38 @@
 
 
 namespace wci { namespace frontend { namespace pascal { namespace parsers {
-
-using namespace std;
-using namespace wci::frontend::pascal;
-using namespace wci::intermediate;
-using namespace wci::intermediate::icodeimpl;
-
-bool WhenStatementParser::INITIALIZED = false;
-
-set<PascalTokenType> WhenStatementParser::ARROW_SET;
-
-
-
+    
+    using namespace std;
+    using namespace wci::frontend::pascal;
+    using namespace wci::intermediate;
+    using namespace wci::intermediate::icodeimpl;
+    
+    bool WhenStatementParser::INITIALIZED = false;
+    
+    set<PascalTokenType> WhenStatementParser::ARROW_SET;
+    
+    void WhenStatementParser::initialize()
+    {
+        if (INITIALIZED) return;
+        
+        ARROW_SET = StatementParser::STMT_START_SET;
+        ARROW_SET.insert(PascalTokenType::THEN);
+        
+        set<PascalTokenType>::iterator it;
+        for (it  = StatementParser::STMT_FOLLOW_SET.begin();
+             it != StatementParser::STMT_FOLLOW_SET.end();
+             it++)
+        {
+            ARROW_SET.insert(*it);
+        }
+        
+        INITIALIZED = true;
+    }
+    
+    WhenStatementParser::WhenStatementParser(PascalParserTD *parent)
+    : StatementParser(parent)
+    {
+        initialize();
+    }
+    
 }}}}
-
