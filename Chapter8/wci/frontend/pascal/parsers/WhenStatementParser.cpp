@@ -60,6 +60,16 @@ namespace wci { namespace frontend { namespace pascal { namespace parsers {
 	{
     	token = next_token(token); //Consume When
 
+    	//Create When Node
+    	ICodeNode *when_node = ICodeFactory::create_icode_node((ICodeNodeType) NT_IF);
+
+        //Parse
+        ExpressionParser expression_parser(this);
+        when_node -> add_child(expression_parser.parse_statement(token));
+
+        token = synchronize(ARROW_SET);
+        
+
 	}
     
 }}}}
