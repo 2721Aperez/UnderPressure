@@ -67,7 +67,18 @@ namespace wci { namespace frontend { namespace pascal { namespace parsers {
         ExpressionParser expression_parser(this);
         when_node -> add_child(expression_parser.parse_statement(token));
 
+        //Sync the token
         token = synchronize(ARROW_SET);
+        if(token->get_type() == (TokenType) PT_ARROW)
+        {
+            token = next_token(token); //comsume the aroww
+        }
+        else
+        {
+            error_handler.flag(token, MISSING_THEN, this);
+        }
+
+
         
 
 	}
