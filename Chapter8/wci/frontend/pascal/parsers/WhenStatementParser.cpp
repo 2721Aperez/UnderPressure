@@ -63,15 +63,14 @@ namespace wci { namespace frontend { namespace pascal { namespace parsers {
     	//Create When Node
     	ICodeNode *when_node = ICodeFactory::create_icode_node((ICodeNodeType) NT_IF);
 
-        //Parse
         ExpressionParser expression_parser(this);
-        when_node -> add_child(expression_parser.parse_statement(token));
+        when_node->add_child(expression_parser.parse_statement(token));
 
-        //Sync the token
+    	//sync token =>
         token = synchronize(ARROW_SET);
         if(token->get_type() == (TokenType) PT_ARROW)
         {
-            token = next_token(token); //comsume the aroww
+            token = next_token(token); //consume the arrow
         }
         else
         {
@@ -79,8 +78,7 @@ namespace wci { namespace frontend { namespace pascal { namespace parsers {
         }
 
 
-        
+    }
 
-	}
     
 }}}}
