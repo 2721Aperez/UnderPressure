@@ -37,7 +37,7 @@ namespace wci { namespace frontend { namespace pascal { namespace parsers {
         if (INITIALIZED) return;
 
         ARROW_SET = StatementParser::STMT_START_SET;
-        ARROW_SET.insert(PascalTokenType::THEN);
+        ARROW_SET.insert(PascalTokenType::ARROW);
 
         set<PascalTokenType>::iterator it;
         for (it  = StatementParser::STMT_FOLLOW_SET.begin();
@@ -63,6 +63,7 @@ namespace wci { namespace frontend { namespace pascal { namespace parsers {
     	//Create When Node
     	ICodeNode *when_node = ICodeFactory::create_icode_node((ICodeNodeType) NT_IF);
 
+
     	//Parse the expression
         ExpressionParser expression_parser(this);
         when_node->add_child(expression_parser.parse_statement(token));
@@ -75,49 +76,106 @@ namespace wci { namespace frontend { namespace pascal { namespace parsers {
         }
         else
         {
-            error_handler.flag(token, MISSING_THEN, this);
+            error_handler.flag(token, MISSING_ARROW, this);
         }
 
-        while((token != nullptr) && (token->get_type() != (TokenType) PT_END))
+        StatementParser statement_parser(this);
+        when_node->add_child(statement_parser.parse_statement(token));
+        token = current_token();
+
+        // Look for the semicolon
+        if (token->get_type() == (TokenType) PT_SEMICOLON)
         {
-        	//parse the arrow statement
-        	StatementParser statement_parser(this);
-        	when_node->add_child(statement_parser.parse_statement(token));
-        	token = current_token();
+            token = next_token(token);  // consume the ;
 
-        	TokenType token_type = token->get_type();
-
-        	//Look for the ;
-        	if(token_type == (TokenType) PT_SEMICOLON)
-        	{
-        		token = next_token(token);
-        	}
-        	else if(StatementParser::STMT_START_SET.find((PascalTokenType)token_type) != StatementParser::STMT_START_SET.end())
-        	{
-        		error_handler.flag(token, MISSING_SEMICOLON, this);
-        	}
-
-        	//Look for otherwise
-        	if(token->get_type() == (TokenType) PT_OTHERWISE)
-        	{
-        		token = next_token(token); //consume otherwise
-
-        		//Parse the otherwise statement
-        		when_node ->add_child(statement_parser.parse_statement(token));
-        	}
         }
 
-        //Look for the END
-        if(token->get_type() == (TokenType)PT_END)
+		ICodeNode *child_node = ICodeFactory::create_icode_node((ICodeNodeType) NT_IF);
+		when_node->add_child(child_node);
+
+		ICodeNode *current_node = child_node;
+
+        while((token != nullptr) && (token->get_type() != (TokenType) PT_OTHERWISE) && (token->get_type() != (TokenType)PT_END))
         {
-        	token = next_token(token);
+//    		ICodeNode *child_node = ICodeFactory::create_icode_node((ICodeNodeType) NT_IF);
+//    		when_node->add_child(child_node);
+
+//        	ExpressionParser expression_parser(this);
+
+        	current_node->add_child(expression_parser.parse_statement(token));
+
+        	token = synchronize(ARROW_SET);
+            if(token->get_type() == (TokenType) PT_ARROW)
+            {
+                token = next_token(token); //consume the arrow
+            }
+            else
+            {
+            	error_handler.flag(token, MISSING_ARROW, this);
+            }
+
+            StatementParser statement_parser(this);
+            current_node->add_child(statement_parser.parse_statement(token));
+            token = current_token();
+
+            if (token->get_type() == (TokenType) PT_SEMICOLON)
+            {
+                token = next_token(token);  // consume the ;
+            }
+            else
+            {
+            	error_handler.flag(token, MISSING_SEMICOLON, this);
+            }
+    		ICodeNode *child_node = ICodeFactory::create_icode_node((ICodeNodeType) NT_IF);
+    		current_node->add_child(child_node);
+    		current_node = child_node;
+
+        }
+
+        if (token->get_type() == (TokenType) PT_OTHERWISE)
+        {
+            token = next_token(token);  // consume the THEN
+
+            // Parse the Otherwise statement.
+            // The when node adopts the statement subtree as its third child.
+            //current_node->add_child(statement_parser.parse_statement(token));
         }
         else
         {
-        	error_handler.flag(token, MISSING_END, this);
+        	error_handler.flag(token, MISSING_OTHERWISE, this);
+        }
+    	token = synchronize(ARROW_SET);
+        if(token->get_type() == (TokenType) PT_ARROW)
+        {
+            token = next_token(token); //consume the arrow
+        }
+        else
+        {
+        	error_handler.flag(token, MISSING_ARROW, this);
+        }
+
+        //StatementParser statement_parser(this);
+        current_node->add_child(statement_parser.parse_statement(token));
+        token = current_token();
+
+        if (token->get_type() == (TokenType) PT_SEMICOLON)
+        {
+            token = next_token(token);  // consume the ;
+        }
+
+        // Look for the END token.
+        if (token->get_type() == (TokenType) PT_END)
+        {
+            token = next_token(token);  // consume END
+        }
+        else
+        {
+            error_handler.flag(token, MISSING_END, this);
         }
 
         return when_node;
 	}
+
+
 
 }}}}
